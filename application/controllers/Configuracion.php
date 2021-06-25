@@ -1,10 +1,5 @@
 <?php
-	/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
+
 	class configuracion extends CI_Controller{
 		public function __construct(){
 			parent::__construct();
@@ -70,4 +65,3 @@
 			}
 		}
 	}
-?>					
