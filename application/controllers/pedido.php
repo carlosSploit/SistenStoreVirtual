@@ -1,0 +1,220 @@
+<?php
+/*
+		Copyright (c) 2020 Codigos de Programacion
+		Punto de Venta CDP
+		Desarrollado por Codigos de Programacion
+		www.codigosdeprogramacion.com
+	*/
+class pedido extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+        $this->load->model("pedidoModel");
+        $this->load->model("ventasModel");
+        $this->load->model("clientesModel");
+    }
+
+    //Carga caja
+    public function index()
+    {
+        if ($this->session->userdata('login') != 1) {
+            redirect('login');
+        }
+        $this->load->view("encabezado");
+        $this->load->view("pedido/pedido", ["titulo" => "Pedidos"]);
+        $this->load->view("pie");
+    }
+
+    //Cargar catalogo eliminados
+    public function eliminadas()
+    {
+        if ($this->session->userdata('login') != 1) {
+            redirect('login');
+        }
+        $datos["titulo"] = "Pedidos Eliminados";
+        $this->load->view("encabezado");
+        $this->load->view("pedido/pedidos_eliminados", $datos);
+        $this->load->view("pie");
+    }
+
+    //Cargar vista editar
+    public function editar($id)
+    {
+        if ($this->session->userdata('login') != 1) {
+            redirect('login');
+        }
+
+        $aColumns = array('ventas.id', 'pedido.id_pedido', 'pedido.folio', 'clientes.nombre', 'pedido.direccion', 'pedido.telefono', 'pedido.estado');
+        $sTable = "pedido";
+
+        $this->db->select($aColumns);
+        $this->db->from($sTable);
+        $this->db->join('ventas', 'ventas.folio = pedido.folio');
+        $this->db->join('clientes', 'ventas.id_cliente = clientes.id');
+        $prodcutos = $this->db->get();
+
+        $data['title'] = 'Modificar pedido';
+        $dataA = array();
+        foreach ($prodcutos->result() as $rows) {
+            if (($rows->id_pedido) == $id) {
+                $dataA['id_pedido'] =  $rows->id_pedido;
+                $dataA['folio'] =  $rows->folio;
+                $dataA['nombre'] = $rows->nombre;
+                $dataA['direccion'] = $rows->direccion;
+                $dataA['telefono'] = $rows->telefono;
+            }
+        }
+        $data['dato'] = $dataA;
+        $this->load->view("encabezado");
+        $this->load->view("pedido/pedido_editar", $data);
+        $this->load->view("pie");
+    }
+
+    public function Actualizar()
+    {
+        $id = $this->input->post("id");
+        $direccion = $this->input->post("direccion");
+        $telefono = $this->input->post("telefono");
+        $resultado = $this->pedidoModel->Actualizar($id, $direccion, $telefono);
+        redirect("pedido/");
+    }
+
+    public function ActualizarEstado($id, $val, $idv)
+    {
+        if ($val != 2) {
+            $resultado = $this->ventasModel->eliminar($idv);
+        } else {
+            $resultado = $this->ventasModel->reactivar($idv);
+        }
+        $resultado = $this->pedidoModel->Actualizar_Estado($id, $val);
+        redirect("pedido/");
+    }
+
+    public function EliminarPedido($id, $val, $idv)
+    {
+        $resultado = $this->ventasModel->eliminar($idv);
+        $resultado2 = $this->pedidoModel->EliminarPedido($id, $val);
+        redirect("pedido/");
+    }
+
+    function mostrarPedido()
+    {
+        // $fWhere = '';
+        $draw = intval($this->input->post("draw"));
+        //$start = intval($this->input->post("start"));
+        //$length = intval($this->input->post("length"));
+        // $order = $this->input->post("order");
+        $activo = $this->input->post("activo");
+
+        // $col = 0;
+        // $dir = "";
+
+        //$aColumns = array('ventas.id', 'pedido.id_pedido', 'pedido.folio', 'clientes.nombre', 'pedido.direccion', 'pedido.telefono', 'pedido.estado');
+        $aColumns = array('ventas.id', 'pedido.id_pedido', 'pedido.folio', 'clientes.nombre', 'pedido.direccion', 'pedido.telefono', 'pedido.estado');
+        $sTable = "pedido";
+        $sWhere = "1";
+        //$sWhereOrg = "pedido.estado < 2";
+
+        $this->db->select($aColumns);
+
+        // if (!empty($order)) {
+        //     foreach ($order as $o) {
+        //         $col = $o['column'];
+        //         $dir = $o['dir'];
+        //     }
+        // }
+
+        // if ($dir != "asc" && $dir != "desc")
+        //     $dir = "desc";
+
+        // if (!isset($aColumns[$col]))
+        //     $order = null;
+        // else
+        //     $order = $aColumns[$col];
+
+        // if ($order != null)
+        //     $this->db->order_by($order, $dir);
+
+        if (!empty($search)) {
+            $x = 0;
+            foreach ($aColumns as $sterm) {
+                if ($x == 0) {
+                    $sWhere .= " AND (" . $sterm . " LIKE '%" . $search . "%' ";
+                } else {
+                    $sWhere .= " OR " . $sterm . " LIKE '%" . $search . "%' ";
+                }
+                $x++;
+            }
+            $sWhere .= ")";
+        }
+
+        //$this->db->where($sWhere);
+        //$this->db->limit($length, $start);
+        $this->db->from($sTable);
+        $this->db->join('ventas', 'ventas.folio = pedido.folio');
+        $this->db->join('clientes', 'ventas.id_cliente = clientes.id');
+        $prodcutos = $this->db->get();
+
+        $data = array();
+
+        if ($activo == 1) {
+            foreach ($prodcutos->result() as $rows) {
+                if (($rows->estado) < 3) {
+                    $data[] = array(
+                        $rows->folio, $rows->nombre, $rows->direccion, $rows->telefono,
+                        "<div class='row m-0 justify-content-center col-auto'>" . "<div class='form-check form-check-inline'>" . "<input class='form-check-input' type='radio' name='opcionbuton" . $rows->id_pedido . "' onclick='ActualEstado(" . $rows->id_pedido . ",0," . $rows->id . ")' id='opcionbuton" . $rows->id_pedido . "' value='option1' " . ((($rows->estado) == 0) ? "checked" : "") . ">" . "<input class='form-check-input' type='radio' name='opcionbuton" . $rows->id_pedido . "' onclick='ActualEstado(" . $rows->id_pedido . ",1," . $rows->id . ")' id='opcionbuton" . $rows->id_pedido . "' value='option2' " . ((($rows->estado) == 1) ? "checked" : "") . ">" . "<input class='form-check-input' type='radio' name='opcionbuton" . $rows->id_pedido . "' onclick='ActualEstado(" . $rows->id_pedido . ",2," . $rows->id . ")' id='opcionbuton" . $rows->id_pedido . "' value='option3' " . ((($rows->estado) == 2) ? "checked" : "") . ">" . "</div>" . "</div>",
+                        "<a href='" . base_url() . "index.php/pedido/editar/" . $rows->id_pedido . "' class='button' data-toggle='tooltip'  data-placement='top' title='Ver ticket' ><span class='fas fa-edit'></span></a>",
+                        "<a href='" . base_url() . "index.php/caja/muestraTicket/" . $rows->id . "' class='button' data-toggle='tooltip'  data-placement='top' title='Ver ticket' ><span class='fas fa-list-alt'></span></a>",
+                        "<a href='#' data-href='" . base_url() . "index.php/pedido/EliminarPedido/" . $rows->id_pedido . "/" . $rows->estado . "/" . $rows->id . "' data-toggle='modal' data-target='#confirm-delete' data-placement='top' title='Cancelar venta'><span class='fas fa-ban'></span></a>"
+                    );
+                }
+            }
+        } else {
+            foreach ($prodcutos->result() as $rows) {
+                if (($rows->estado) > 2) {
+                    $data[] = array(
+                        $rows->folio, $rows->nombre, $rows->direccion, $rows->telefono,
+                        "<a href='" . base_url() . "index.php/caja/muestraTicket/" . $rows->id . "' class='button' data-toggle='tooltip'  data-placement='top' title='Ver ticket' ><span class='fas fa-list-alt'></span></a>",
+                    );
+                }
+            }
+        }
+
+        //echo json_encode($data);
+
+        $total_registros = $this->totalRegistro($sTable, '1');
+        $total_registros_filtrado = $this->totalRegistroFiltrados($sTable, '1');
+        $output = array(
+            "draw" => $draw,
+            "recordsTotal" => $total_registros,
+            "recordsFiltered" => $total_registros_filtrado,
+            "data" => $data
+        );
+        echo json_encode($output);
+        exit();
+    }
+
+    public function totalRegistro($sTable)
+    {
+        $this->db->select('COUNT(*) as num');
+        $this->db->from($sTable);
+        //$this->db->where($sWhereOrg);
+        $query = $this->db->get()->row();
+
+        if (isset($query)) return $query->num;
+        return 0;
+    }
+
+    public function totalRegistroFiltrados($sTable, $where)
+    {
+        $this->db->select('COUNT(*) as num');
+        $this->db->from($sTable);
+        //$this->db->where($where);
+        $query = $this->db->get()->row();
+
+        if (isset($query)) return $query->num;
+        return 0;
+    }
+}
