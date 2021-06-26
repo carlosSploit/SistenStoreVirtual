@@ -60,8 +60,8 @@
                         <tr>
                             <th>Folio</th>
                             <th>Cliente</th>
-                            <th>Direccion</th>
-                            <th>Telefono</th>
+                            <th>Direccion del Pedido</th>
+                            <th>Telefono.P.</th>
                             <th>Estado</th>
                             <th width="3%"></th>
                             <th width="3%"></th>
@@ -84,13 +84,13 @@
 <div class="modal" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div id="headModel" class="modal-header">
                 <h5 class="modal-title">Cancelar pedido</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div id="BodyModel" class="modal-body">
                 <p>¿Desea cancelar este pedido?</p>
             </div>
             <div class="modal-footer">

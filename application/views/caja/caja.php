@@ -1,13 +1,6 @@
 <?php
-/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 
 $idVentaTmp = uniqid();
-
 $formas_pago = $this->db->get_where('forma_pago')->result();
 ?>
 
@@ -76,19 +69,27 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 								</div>
 								<br>
 								<div class="row" id="datpedido">
-									<div class="input-group col">
+									<div class="input-group col-auto">
 										<div class="input-group-prepend">
 											<div class="input-group-text"><span class="fas fa-street-view"></span></div>
 										</div>
-										<input class="form-control" id="codigo" name="direc" type="text" placeholder="Direccion">
+										<input class="form-control" id="direc" name="direc" type="text" placeholder="Direccion">
+									</div>
+									<div class="w-100 d-block m-2"></div>
+									<div class="input-group col">
+										<div class="input-group-prepend">
+											<div class="input-group-text"><span class="fas fa-mobile-alt"></span></div>
+										</div>
+										<input class="form-control" name="telf" id="telf" type="text" placeholder="Telefono">
 									</div>
 									<div class="input-group col">
 										<div class="input-group-prepend">
 											<div class="input-group-text"><span class="fas fa-mobile-alt"></span></div>
 										</div>
-										<input class="form-control" name="telf" id="cantiprod" type="text" placeholder="Telefono">
+										<input class="form-control" name="date" id="date" type="date" placeholder="Telefono">
 									</div>
 								</div>
+								<br>
 							</div>
 						</div>
 
@@ -175,6 +176,7 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 				$('#chekpedido1').val($('#chekpedido1').prop('checked'));
 			}
 		});
+		//inicializar datos en el pedido
 	});
 
 	$(document).ready(function() {
@@ -245,8 +247,11 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 			minLength: 3,
 			select: function(event, ui) {
 				event.preventDefault();
+				console.log(ui.item);
 				$("#id_cliente").val(ui.item.id);
 				$("#cliente").val(ui.item.value);
+				$("#direc").val(ui.item.dic);
+				$("#telf").val(ui.item.tel);
 			}
 		});
 	});

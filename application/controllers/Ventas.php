@@ -62,7 +62,9 @@ class ventas extends CI_Controller
 			$this->load->model("pedidoModel");
 			$direccion = $this->input->post("direc");
 			$telefono = $this->input->post("telf");
-			$this->pedidoModel->insertar($ultimoFolio, $direccion, $telefono, 0);
+			$date = $this->input->post("date");
+
+			$this->pedidoModel->insertar($ultimoFolio, $direccion, $telefono, $date, 0);
 		} else {
 			$resultado = $this->ventasModel->insertar($ultimoFolio, $total, $fecha, $id_usuario, $id_caja, $id_cliente, $forma_pago, 1);
 		}

@@ -1,10 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 	
 	ini_set('display_errors', 1);	
 	require APPPATH.'/third_party/fpdf/fpdf.php';
@@ -87,5 +81,3 @@
 	$pdf->Multicell(70, 4, utf8_decode($this->db->get_where('configuracion' , array('nombre' =>'ticket_leyenda'))->row()->valor), 0,'C', 0);
 	
 	$pdf->Output("Ticket.pdf", 'I');
-	
-?>							

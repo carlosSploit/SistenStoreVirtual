@@ -32,13 +32,17 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
-                            <label for="precio_venta"><span class="text-danger">*</span>Precio de venta</label>
-                            <input class="form-control" id="direccion" type="text" name="direccion" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['direccion']; ?>" required>
+                            <label for="precio_venta"><span class="text-danger">*</span>Direccion</label>
+                            <input class="form-control col-auto" id="direccion" type="text" name="direccion" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['direccion']; ?>" required>
                         </div>
-
+                        <div class="w-100 d-block m-2"></div>
                         <div class="col">
-                            <label for="precio_venta"><span class="text-danger">*</span>Precio de venta</label>
-                            <input class="form-control" id="telefono" type="text" name="telefono" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['telefono'];; ?>" required>
+                            <label for="precio_venta"><span class="text-danger">*</span>Telefono</label>
+                            <input class="form-control" id="telefono" type="text" name="telefono" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['telefono']; ?>" required>
+                        </div>
+                        <div class="col">
+                            <label for="precio_venta"><span class="text-danger">*</span>Fecha</label>
+                            <input class="form-control" id="datep" type="date" name="datep" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['date']; ?>" required>
                         </div>
                     </div>
                 </div>

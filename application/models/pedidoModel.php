@@ -25,21 +25,23 @@ class pedidoModel extends CI_Model
     }
 
     //Inserta producto en tabla temporal
-    public function insertar($folio, $direccion, $telefono, $estado)
+    public function insertar($folio, $direccion, $telefono, $date, $estado)
     {
         return $this->db->insert("pedido", [
             "folio" => $folio,
             "direccion" => $direccion,
             "telefono" => $telefono,
+            "datep" => $date,
             "estado" => $estado,
         ]);
     }
 
-    public function Actualizar($id, $direccion, $telefono)
+    public function Actualizar($id, $direccion, $telefono, $date)
     {
         $datos = [
             "direccion" => $direccion,
-            "telefono" => $telefono
+            "telefono" => $telefono,
+            "datep" => $date
         ];
         return $this->db->update("pedido", $datos, ["id_pedido" => $id]);
     }
