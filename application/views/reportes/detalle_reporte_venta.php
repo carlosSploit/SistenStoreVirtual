@@ -1,12 +1,3 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
-
-
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div class="panel">
@@ -27,29 +18,52 @@
 
 					<div class="form-group col-md-4">
 						<label><span class="text-danger">*</span>Caja:</label>
-						<select id="caja" name="caja" class="form-control" required >
-						<option value="0">Todas</option>
-						<?php foreach ($cajas as $caja) { ?>
-							<option value="<?php echo $caja->id; ?>"><?php echo $caja->nombre; ?></option>
-						<?php } ?>>
+						<select id="caja" name="caja" class="form-control" required>
+							<option value="0">Todas</option>
+							<?php foreach ($cajas as $caja) { ?>
+								<option value="<?php echo $caja->id; ?>"><?php echo $caja->nombre; ?></option>
+								<?php } ?>>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-				<div class="row">
-					<div class="col-12">
-						<label class="text-danger">( * ) Campo obligatorio</label>
+					<div class="row">
+						<div class="col-12">
+							<label class="text-danger">( * ) Campo obligatorio</label>
+						</div>
 					</div>
 				</div>
-			</div>
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<button type="submit" class="btn btn-success">Generar reporte</button>
+						<button type="button" id="butacped" class="btn btn-success">Generar reporte</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$("#butacped").click(function(e) {
+		if (validador()) {
+			notify(1, "Insertar", "El pedido se a editado con exito", 'R', "success");
+			setTimeout(messeg(), 4000);
+		} else {
+			notify(1, "Insertar", "La Categoria se a insertado con exito", 'R', "error");
+		}
+	});
+
+	/* Validacion de agregar */
+	function validador() {
+		var valida = false;
+		if (($("#fecha_inicio").val() != "") || ($("#fecha_fin").val() != "") || ($("#caja").val() != "")) {
+			valida = true;
+		}
+		return valida;
+	}
+
+	function messeg() {
+		$("#form_reporte").submit();
+	}
+</script>

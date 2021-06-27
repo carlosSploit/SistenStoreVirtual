@@ -1,5 +1,4 @@
 <?php
-
 	class detalle_venta_producto extends CI_Controller{
         public function __construct(){
             parent::__construct();
@@ -92,4 +91,3 @@
             redirect("detalle_venta_producto/");
 		}
 	}
-?>

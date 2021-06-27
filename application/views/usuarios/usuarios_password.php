@@ -1,25 +1,18 @@
-<!--
-	Copyright (c) 2019 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		
+
 		<h4><?php echo $title; ?></h4>
-		
+
 		<?php if (validation_errors()) : ?>
-		<div class="alert alert-danger" role="alert">
-			<?php echo validation_errors();  ?>
-		</div>
+			<div class="alert alert-danger" role="alert">
+				<?php echo validation_errors();  ?>
+			</div>
 		<?php endif; ?>
-		
+
 		<form method="post" action="<?php echo base_url() ?>index.php/usuarios/actualizar_password" autocomplete="off">
-			
+
 			<input type="hidden" name="id" value="<?php echo $dato->id; ?>">
-			
+
 			<div class="form-group">
 				<label for="usuario">Usuario</label>
 				<div class="control">
@@ -48,7 +41,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<a href="<?php echo base_url() ?>index.php/usuarios" class="btn btn-primary">Volver</a>
 			<button class="btn btn-success" type="submit">Guardar</button>
 		</form>
@@ -56,8 +49,7 @@
 </div>
 
 <script type="text/javascript">
-
-	$(document).on("keypress", 'form', function (e) {
+	$(document).on("keypress", 'form', function(e) {
 		var code = e.keyCode || e.which;
 		console.log(code);
 		if (code == 13) {

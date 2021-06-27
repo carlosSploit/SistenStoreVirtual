@@ -1,21 +1,14 @@
-<!--
-	Copyright (c) 2019 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		
+
 		<h4><?php echo $title; ?></h4>
-		
+
 		<?php if (validation_errors()) : ?>
-		<div class="alert alert-danger" role="alert">
-			<?php echo validation_errors();  ?>
-		</div>
+			<div class="alert alert-danger" role="alert">
+				<?php echo validation_errors();  ?>
+			</div>
 		<?php endif; ?>
-		
+
 		<form method="post" action="<?php echo base_url() ?>index.php/usuarios/insertar" autocomplete="off">
 
 			<div class="form-group">
@@ -32,7 +25,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="form-group">
 				<div class="row">
 					<div class="col-12 col-sm-6">
@@ -78,7 +71,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<a href="<?php echo base_url() ?>index.php/usuarios" class="btn btn-primary">Volver</a>
 			<button class="btn btn-success" type="submit">Guardar</button>
 		</form>
@@ -87,7 +80,7 @@
 
 <script type="text/javascript">
 	function validaUsuario(usuario, tagUsuario, tagSpan) {
-		
+
 		$.ajax({
 			url: '<?php echo base_url(); ?>index.php/usuarios/validarUsuario/' + usuario,
 			success: function(response) {
@@ -95,19 +88,19 @@
 					$(tagSpan).text('El usuario ya existe');
 					$(divUsuario).addClass("form-group has-error");
 					$(tagUsuario).val('');
-					} else {
+				} else {
 					$(tagSpan).text('');
 					$(divUsuario).removeClass("has-error");
 				}
 			},
-			
+
 			error: function() {
 				console.log("No se ha podido obtener la información");
 			}
 		});
 	}
 
-	$(document).on("keypress", 'form', function (e) {
+	$(document).on("keypress", 'form', function(e) {
 		var code = e.keyCode || e.which;
 		console.log(code);
 		if (code == 13) {
@@ -116,4 +109,4 @@
 			return false;
 		}
 	});
-</script>	
+</script>

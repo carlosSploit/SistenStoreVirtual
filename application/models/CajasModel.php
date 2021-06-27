@@ -1,10 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 	class cajasModel extends CI_Model{
 		
 		private $id;
@@ -77,4 +71,3 @@
 			$this->db->update('cajas');
 		}
 	}
-?>

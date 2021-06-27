@@ -1,10 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 	class movimientosModel extends CI_Model{
 		
 		private $id;
@@ -84,4 +78,3 @@
 			return $this->db->update("movimientos", $datos, ["id_producto" => $id_producto, "id_transaccion" => $id_transaccion, "tipo" => $tipo]);
 		}
 	}
-?>

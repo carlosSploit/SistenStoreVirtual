@@ -1,10 +1,3 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="panel">
@@ -64,15 +57,37 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(e) {
-        var base_url = "<?php echo base_url(); ?>";
-        $("#butacped").click(function() {
-            if ($("#direccion").val() != "" & $("#telefono").val() != "") {
-                $("#metodo_act").submit();
-            } else {
-                alert("Unas de las casillas esta incompleta, completarla porfavor");
-            }
+    // $(document).ready(function(e) {
+    //     var base_url = "< echo base_url(); ?>";
+    //     $("#butacped").click(function() {
+    //         if ($("#direccion").val() != "" & $("#telefono").val() != "") {
+    //             $("#metodo_act").submit();
+    //         } else {
+    //             alert("Unas de las casillas esta incompleta, completarla porfavor");
+    //         }
 
-        });
+    //     });
+    // });
+
+    $("#butacped").click(function(e) {
+        if (validador()) {
+            notify(1, "Insertar", "El pedido se a editado con exito", 'R', "success");
+            setTimeout(messeg(), 4000);
+        } else {
+            notify(1, "Insertar", "La Categoria se a insertado con exito", 'R', "error");
+        }
     });
+
+    /* Validacion de agregar */
+    function validador() {
+        var valida = false;
+        if (($("#direccion").val() != "") || ($("#telefono").val() != "") || ($("#datep").val() != "")) {
+            valida = true;
+        }
+        return valida;
+    }
+
+    function messeg() {
+        $("#metodo_act").submit();
+    }
 </script>

@@ -1,10 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2019 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 	class unidades extends CI_Controller{
 		public function __construct(){
 			parent::__construct();
@@ -116,4 +110,3 @@
 			echo $num_rows;
 		}
 	}
-?>					

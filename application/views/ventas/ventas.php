@@ -1,10 +1,3 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
 	$(document).ready(function(e) {
 		var base_url = "<?php echo base_url(); ?>";

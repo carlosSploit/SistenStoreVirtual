@@ -1,14 +1,6 @@
 <?php
-/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
-
 $idCompraTmp = uniqid();
 ?>
-
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div class="panel">
@@ -26,7 +18,7 @@ $idCompraTmp = uniqid();
 
 					<div class="col-12 col-sm-4">
 						<label>Nombre de producto:</label>
-						<input class="form-control" id="nombre" name="nombre" type="text" readonly >
+						<input class="form-control" id="nombre" name="nombre" type="text" readonly>
 					</div>
 
 					<div class="col-12 col-sm-4">
@@ -47,7 +39,7 @@ $idCompraTmp = uniqid();
 					</div>
 
 					<div class="col-12 col-sm-4">
-					<label> </label>
+						<label> </label>
 						<button id="agregar_producto" name="agregar_producto" type="button" class="btn btn-primary" onClick="agregarProducto(id_producto.value, cantidad.value, '<?php echo $idCompraTmp; ?>')">Agregar producto</button>
 					</div>
 				</div>
@@ -80,20 +72,20 @@ $idCompraTmp = uniqid();
 		</div>
 	</div>
 </div>
-	
+
 <div class="modal fade" id="AvanzaModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
 				<div id="modal-title"></div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body" id="modal-body"></div>
-            <div class="modal-footer clearfix">
-                <button type="button" class="pull-left btn btn-primary" data-dismiss="modal">Aceptar</button>
-            </div>
-        </div>
-    </div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body" id="modal-body"></div>
+			<div class="modal-footer clearfix">
+				<button type="button" class="pull-left btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
@@ -115,9 +107,9 @@ $idCompraTmp = uniqid();
 	function muestraModal(titulo, mensaje) {
 		$(document).ready(function() {
 			$('#modal-title').html('<b>' + titulo + '</b>');
-        	$('#modal-body').html('<p>' + mensaje + '</p>');
-        	$('#AvanzaModal').modal('show');
-		});  	
+			$('#modal-body').html('<p>' + mensaje + '</p>');
+			$('#AvanzaModal').modal('show');
+		});
 	}
 
 	function buscarProducto(e, tagCodigo, codigo) {
@@ -134,13 +126,13 @@ $idCompraTmp = uniqid();
 							var resultado = JSON.parse(response);
 							$("#resultado_error").html(resultado.error);
 
-							if(resultado.existe){
+							if (resultado.existe) {
 								$("#id_producto").val(resultado.datos.id);
-							 	$("#nombre").val(resultado.datos.nombre);
-							 	$("#cantidad").val(1);
-							 	$("#precio_compra").val(resultado.datos.precio_compra);
-							 	$("#subtotal_producto").val(resultado.datos.precio_compra);
-							 	$("#cantidad").focus();
+								$("#nombre").val(resultado.datos.nombre);
+								$("#cantidad").val(1);
+								$("#precio_compra").val(resultado.datos.precio_compra);
+								$("#subtotal_producto").val(resultado.datos.precio_compra);
+								$("#cantidad").focus();
 							} else {
 								$("#id_producto").val('');
 								$("#codigo").val('');
@@ -157,7 +149,7 @@ $idCompraTmp = uniqid();
 	}
 
 	function agregarProducto(id_producto, cantidad, id_compra) {
-		if(id_producto != null && id_producto != 0 && cantidad > 0){
+		if (id_producto != null && id_producto != 0 && cantidad > 0) {
 			$.ajax({
 				url: '<?php echo base_url(); ?>index.php/compras/agregaProductoId/' + id_producto + '/' + cantidad + '/' + id_compra,
 				success: function(response) {
@@ -166,7 +158,7 @@ $idCompraTmp = uniqid();
 					} else {
 						var resultado = JSON.parse(response);
 
-						if(resultado.error ==''){
+						if (resultado.error == '') {
 							$("#resultado_error").html(resultado.error);
 							$('#tablaProductos tbody').empty();
 							$("#tablaProductos tbody").append(resultado.datos);
@@ -254,5 +246,4 @@ $idCompraTmp = uniqid();
 		}
 
 	}
-
 </script>

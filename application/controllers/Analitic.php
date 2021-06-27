@@ -1,10 +1,4 @@
 <?php
-/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 class Analitic extends CI_Controller
 {
     public function __construct()
@@ -14,7 +8,7 @@ class Analitic extends CI_Controller
         $this->load->library('session');
     }
 
-    //Carga caja
+    //Carga Analitic
     public function index()
     {
         if ($this->session->userdata('login') != 1) {
@@ -24,7 +18,7 @@ class Analitic extends CI_Controller
         $this->load->view("Analitic/Analitic");
         $this->load->view("pie");
     }
-
+    //metodo de api de analitic
     public function Analitic($anction)
     {
         $respuesta = $this->AnaliticModel->listar($anction);

@@ -1,28 +1,25 @@
-<!--
-	Copyright (c) 2019 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
-$(document).ready(function(e){
-  var base_url = "<?php echo base_url();?>";
-  $('#dataTable').DataTable({
-     "pageLength" : 10,
-     "serverSide": true,
-     "order": [[0, "asc" ]],
-     "ajax":{
-              url :  base_url+'index.php/compras/mostrarCompras',
-			  type : 'POST',
-			  data: { activo: "0" }
-            },
-  });
-});
+	$(document).ready(function(e) {
+		var base_url = "<?php echo base_url(); ?>";
+		$('#dataTable').DataTable({
+			"pageLength": 10,
+			"serverSide": true,
+			"order": [
+				[0, "asc"]
+			],
+			"ajax": {
+				url: base_url + 'index.php/compras/mostrarCompras',
+				type: 'POST',
+				data: {
+					activo: "0"
+				}
+			},
+		});
+	});
 
-$(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-});
+	$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
 </script>
 
 <div class="row">

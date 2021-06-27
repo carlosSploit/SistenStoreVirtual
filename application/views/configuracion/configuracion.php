@@ -1,9 +1,3 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
 <?php
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
@@ -20,7 +14,7 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 				<br>
 			<?php endif; ?>
 
-			<form method="post" action="<?php echo base_url() ?>index.php/configuracion/actualizar" enctype="multipart/form-data" autocomplete="off" >
+			<form method="post" action="<?php echo base_url() ?>index.php/configuracion/actualizar" enctype="multipart/form-data" autocomplete="off">
 				<br>
 
 				<div class="form-group">
@@ -29,7 +23,7 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 							<label for="tienda_nombre"><span class="text-danger">*</span>Nombre de la tienda:</label>
 							<input class="form-control form-control-sm" id="tienda_nombre" type="text" name="tienda_nombre" value="<?php echo htmlspecialchars($this->db->get_where('configuracion', array('nombre' => 'tienda_nombre'))->row()->valor); ?>" autofocus required>
 						</div>
-						
+
 						<div class="col-12 col-sm-6">
 							<label for="tienda_rfc"><span class="text-danger">*</span>RFC</label>
 							<input class="form-control form-control-sm" id="tienda_rfc" type="text" name="tienda_rfc" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_rfc'))->row()->valor; ?>" required>
@@ -43,7 +37,7 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 							<label for="tienda_telefono"><span class="text-danger">*</span>Teléfono:</label>
 							<input class="form-control form-control-sm" id="tienda_telefono" type="text" name="tienda_telefono" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_telefono'))->row()->valor; ?>" required>
 						</div>
-						
+
 						<div class="col-12 col-sm-6">
 							<label for="tienda_correo"><span class="text-danger">*</span>Correo electrónico</label>
 							<input class="form-control form-control-sm" id="tienda_correo" type="text" name="tienda_correo" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_correo'))->row()->valor; ?>" required>
@@ -57,7 +51,7 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 							<label for="tienda_direccion"><span class="text-danger">*</span>Direcci&oacute;n:</label>
 							<textarea class="form-control form-control-sm" id="tienda_direccion" name="tienda_direccion"><?php echo htmlspecialchars($this->db->get_where('configuracion', array('nombre' => 'tienda_direccion'))->row()->valor); ?></textarea>
 						</div>
-						
+
 						<div class="col-12 col-sm-6">
 							<label for="ticket_leyenda"><span class="text-danger">*</span>Leyenda ticket</label>
 							<textarea class="form-control form-control-sm" id="ticket_leyenda" name="ticket_leyenda"><?php echo htmlspecialchars($this->db->get_where('configuracion', array('nombre' => 'ticket_leyenda'))->row()->valor); ?></textarea>
@@ -66,8 +60,8 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 				</div>
 
 				<div class="form-group">
-					<label for="tienda_logo">Logotipo</label><br/>
-					<img id="load_img" class="img-responsive" src="<?php echo base_url() . 'images/logo.png?n=' . time(); ?>" alt="Logo" width="200" /> <br/>
+					<label for="tienda_logo">Logotipo</label><br />
+					<img id="load_img" class="img-responsive" src="<?php echo base_url() . 'images/logo.png?n=' . time(); ?>" alt="Logo" width="200" /> <br />
 					<input type="file" id="tienda_logo" name="tienda_logo" accept="image/png" onChange='upload_image();'>
 					<p class="help-block">Cargar imagen en formato png de 200x200 píxeles</p>
 				</div>
@@ -104,8 +98,7 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 </div>
 
 <script type="text/javascript">
-
-	$(document).on("keypress", 'form', function (e) {
+	$(document).on("keypress", 'form', function(e) {
 		var code = e.keyCode || e.which;
 		console.log(code);
 		if (code == 13) {

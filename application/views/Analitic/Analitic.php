@@ -243,7 +243,7 @@
                 tablaDat(resultado, "#mychart1");
                 //colocar informacion al cuadro
                 var ctx1 = document.getElementById('myChart1').getContext('2d');
-
+                notify(1, "Graficos", "Generando analiticas", 'R', "success");
                 var myChart1 = new Chart(ctx1, {
                     type: 'bar',
                     data: {

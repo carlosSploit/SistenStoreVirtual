@@ -1,9 +1,3 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
 <?php
 
 $hoy = date('Y-m-d');
@@ -11,17 +5,23 @@ $hoy = date('Y-m-d');
 ?>
 
 <script>
-	$(document).ready(function(e){
-		var base_url = "<?php echo base_url();?>";
+	$(document).ready(function(e) {
+		var base_url = "<?php echo base_url(); ?>";
 		$('#dataTable').DataTable({
-			"pageLength" : 10,
+			"pageLength": 10,
 			"serverSide": true,
-			"order": [[3, "desc" ]],
-			"ajax":{
-					url :  base_url+'index.php/ventas/mostrarVentas',
-					type : 'POST',
-					data: { activo: "1", fecha: '<?php echo $hoy; ?>', id_caja: '<?php echo $this->session->userdata('id_caja'); ?>' }
-					},
+			"order": [
+				[3, "desc"]
+			],
+			"ajax": {
+				url: base_url + 'index.php/ventas/mostrarVentas',
+				type: 'POST',
+				data: {
+					activo: "1",
+					fecha: '<?php echo $hoy; ?>',
+					id_caja: '<?php echo $this->session->userdata('id_caja'); ?>'
+				}
+			},
 		});
 	});
 
@@ -36,10 +36,10 @@ $hoy = date('Y-m-d');
 			<h4><?php echo $titulo; ?></h4>
 
 			<form method="post" action="<?php echo base_url() ?>index.php/reportes/muestra_reporte_ventas" autocomplete="off">
-			<input type="hidden" id="fecha_inicio" name="fecha_inicio" value="<?php echo $hoy; ?>" />
-			<input type="hidden" id="fecha_fin" name="fecha_fin" value="<?php echo $hoy; ?>" />
-			<input type="hidden" id="caja" name="caja" value="<?php echo $this->session->userdata('id_caja'); ?>" />
-			<button type="submit" class="btn btn-success">Imprimir</button>
+				<input type="hidden" id="fecha_inicio" name="fecha_inicio" value="<?php echo $hoy; ?>" />
+				<input type="hidden" id="fecha_fin" name="fecha_fin" value="<?php echo $hoy; ?>" />
+				<input type="hidden" id="caja" name="caja" value="<?php echo $this->session->userdata('id_caja'); ?>" />
+				<button type="submit" class="btn btn-success">Imprimir</button>
 			</form>
 
 			<div class="table-responsive">

@@ -1,11 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
-	
 	ini_set('display_errors', 1);	
 	require APPPATH.'/third_party/fpdf/fpdf.php';
 	require APPPATH.'/third_party/plantilla_reporte_ventas.php';
@@ -61,4 +54,3 @@
 	$pdf->SetFont('Arial','',8);
 	
 	$pdf->Output("I",'Reporte de ventas');
-?>

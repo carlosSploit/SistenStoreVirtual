@@ -1,10 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 	class almacenModel extends CI_Model{
 		
 		private $folio;
@@ -59,4 +53,3 @@
 			return $this->db->update("almacen_movimiento", $datos, ["id" => $id]);
 		}
 	}
-?>

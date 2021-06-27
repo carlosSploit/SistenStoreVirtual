@@ -1,10 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2019 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 	class configuracionModel extends CI_Model{
 		
 		private $id;
@@ -31,4 +25,3 @@
 			return $this->db->get_where("configuracion", array('nombre' =>'tienda_nombre'))->row()->valor;
 		}
 	}
-?>

@@ -1,10 +1,3 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
     $(document).ready(function(e) {
         var base_url = "<?php echo base_url(); ?>";
@@ -60,8 +53,9 @@
                         <tr>
                             <th>Folio</th>
                             <th>Cliente</th>
-                            <th>Direccion del Pedido</th>
+                            <th>Direccion.P.</th>
                             <th>Telefono.P.</th>
+                            <th>Date.P.</th>
                             <th>Estado</th>
                             <th width="3%"></th>
                             <th width="3%"></th>

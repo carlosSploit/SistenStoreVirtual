@@ -1,14 +1,9 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
 	$(document).ready(function() {
 		$('#dataTable').DataTable({
-			"order": [[1, "asc" ]]
+			"order": [
+				[1, "asc"]
+			]
 		});
 	});
 
@@ -26,8 +21,8 @@
 				<a href="<?php echo base_url() ?>index.php/categorias/eliminados" class="btn btn-warning">Eliminados</a>
 			</p>
 		</div>
-		
-		
+
+
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
 				<thead>
@@ -88,7 +83,7 @@
 <script>
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-		
+
 		$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 	});
 </script>

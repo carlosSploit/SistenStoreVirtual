@@ -15,16 +15,18 @@
 
 	<!-- Custom styles for this template-->
 	<link href="<?php echo base_url() ?>css/sb-admin.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>css/vanillatoasts.css" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
 	<link href="<?php echo base_url() ?>vendor/jquery-ui/jquery-ui.css" rel="stylesheet">
 
 	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/jquery-ui/jquery-ui.js"></script>
+	<script src="<?php echo base_url() ?>js/vanillatoasts.js"></script>
+
 </head>
 
 <body id="page-top">
-
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
 		<a class="navbar-brand mr-1" href="<?php echo base_url() ?>index.php/welcome"><?php echo $this->db->get_where("configuracion", array('nombre' => 'tienda_nombre'))->row()->valor; ?> </a>

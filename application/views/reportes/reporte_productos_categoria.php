@@ -1,11 +1,4 @@
-<?php
-	/*
-		Copyright (c) 2019 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
-	
+<?php	
 	ini_set('display_errors', 1);	
 	require APPPATH.'/third_party/fpdf/fpdf.php';
 	require APPPATH.'/third_party/plantilla_reporte_productos.php';
@@ -38,4 +31,3 @@
 	}
 	
 	$pdf->Output("I",'Reporte de productos');
-?>

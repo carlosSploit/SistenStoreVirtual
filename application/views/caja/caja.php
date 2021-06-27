@@ -13,15 +13,15 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 
 				<div class="form-group">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-12 col-md-6 col-lg-6">
 							<div class="ui-widget">
 								<label><span class="text-danger">*</span>Cliente:</label>
 								<input id="id_cliente" name="id_cliente" value="1" type="hidden" />
 								<input class="form-control" id="cliente" name="cliente" type="text" placeholder="Escribe el nombre del cliente" value="<?php echo $this->db->get_where('clientes', array('id' => 1))->row()->nombre; ?>" onkeyup="agregarProducto(event, this, this.value, total.value, '<?php echo $idVentaTmp; ?>')" autocomplete="off" required>
 							</div>
 						</div>
-
-						<div class="col-sm-6">
+						<div class="w-100 d-block d-lg-none d-md-none d-sm-none m-2"></div>
+						<div class="col-sm-12 col-md-6 col-lg-6">
 							<label><span class="text-danger">*</span>Forma de pago:</label>
 							<select id="forma_pago" name="forma_pago" class="form-control" required>
 								<?php foreach ($formas_pago as $forma) { ?>
@@ -39,7 +39,7 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 							<input class="form-control" id="codigo" name="codigo" type="text" placeholder="Escribe el código y presiona enter" onkeyup="agregarProducto(event, this.value, total.value, '<?php echo $idVentaTmp; ?>')" autocomplete="off" autofocus>
 						</div>-->
 
-						<div class="col-sm-6">
+						<div class="col-sm-12 col-md-6 col-lg-6">
 							<div class="row m-1">
 								<label>Código de barras:</label>
 								<div class="row">
@@ -49,6 +49,7 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 										</div>
 										<input class="form-control" id="codigo" name="codigo" type="text" placeholder="Escribe el código y presiona enter" onkeyup="agregarProducto(event, this.value, total.value, '<?php echo $idVentaTmp; ?>')" autocomplete="off" autofocus>
 									</div>
+									<div class="w-100 d-block d-lg-none m-2"></div>
 									<div class="input-group col">
 										<div class="input-group-prepend">
 											<div class="input-group-text"><span class="fas fa-sort-amount-up-alt"></span></div>
@@ -82,9 +83,10 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 										</div>
 										<input class="form-control" name="telf" id="telf" type="text" placeholder="Telefono">
 									</div>
+									<div class="w-100 d-block d-lg-none m-2"></div>
 									<div class="input-group col">
 										<div class="input-group-prepend">
-											<div class="input-group-text"><span class="fas fa-mobile-alt"></span></div>
+											<div class="input-group-text"><span class="fas fa-calendar-alt"></span></div>
 										</div>
 										<input class="form-control" name="date" id="date" type="date" placeholder="Telefono">
 									</div>
@@ -92,22 +94,26 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 								<br>
 							</div>
 						</div>
-
-
-						<div class="col-sm-2">
+						<!-- <div class="col-lg-2">
 							<label for="codigo" id="resultado_error" style="color:red"></label>
-						</div>
-
-						<div class="col-12 col-sm-12 col-md-4">
-							<label style='font-weight:bold; font-size:30px; text-align:center;'> Total $</label><input type="text" name="total" id="total" size="7" readonly="true" value="0.00" style='font-weight:bold; font-size:30px; text-align:center; border:#E2EBED; background:#ffffff' />
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="row">
-						<div class="col-sm-2">
-							<button id="completa_venta" type="button" class="btn btn-success">Completar venta</button>
+						</div> -->
+						<div class="w-100 d-block d-lg-none d-md-none d-sm-block m-2"></div>
+						<div class="col-lg-6 col-sm-12 col-md-6">
+							<div class="row">
+								<div class="col">
+									<label style='font-weight:bold; font-size:30px; text-align:center;'> Total $</label>
+									<div class="w-100 d-none d-lg-block d-md-block d-sm-block m-2"></div>
+									<input type="text" name="total" id="total" size="7" readonly="true" value="0.00" style='font-weight:bold; font-size:30px; text-align:center; border:#E2EBED; background:#ffffff' />
+								</div>
+								<div class="w-100 d-block d-lg-none d-md-none d-sm-none m-2"></div>
+								<div class="form-group col">
+									<div class="row">
+										<div class="col">
+											<button id="completa_venta" type="button" class="col-lg-8 col-sm-12 col-md-8 btn btn-success">Completar venta</button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -234,12 +240,34 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 		$("#completa_venta").click(function() {
 			var nFilas = $("#tablaProductos tr").length;
 			if (nFilas < 2) {
-				$('#modalito').modal('show');
+				notify(1, "Venta", "Error al realizar la venta", 'R', "error");
+				//$('#modalito').modal('show');
 			} else {
-				$("#form_venta").submit();
+				if (validad()) {
+					notify(1, "Insercion", "La venta se realizo con exito", 'R', "success");
+					setTimeout(metSub(), 4000);
+				} else {
+					notify(1, "Venta", "Error, unas de las casillas esta vacia, para el pedido", 'R', "error");
+				}
 			}
 		});
+		/* Replicar en las casillas 
+		   "#telf" es la id de cada capmo.
+		*/
+		function validad() {
+			var band = false;
+			if (($("#telf").val() != "") || ($("#direc").val() != "")) {
+				band = true;
+			}
+			return band;
+		}
+
+		function metSub() {
+			$("#form_venta").submit();
+		}
 	});
+
+
 
 	$(function() {
 		$("#cliente").autocomplete({

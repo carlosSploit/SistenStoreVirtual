@@ -1,14 +1,9 @@
-<!--
-	Copyright (c) 2020 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
 	$(document).ready(function() {
 		$('#dataTable').DataTable({
-			"order": [[1, "asc"]]
+			"order": [
+				[1, "asc"]
+			]
 		});
 	});
 
@@ -19,14 +14,14 @@
 
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		
+
 		<h4><?php echo $titulo; ?></h4>
 		<div class="centrado">
 			<p>
 				<a href="<?php echo base_url() ?>index.php/roles" class="btn btn-info">Roles</a>
 			</p>
 		</div>
-		
+
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
 				<thead>
@@ -37,7 +32,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php $a=1; foreach ($datos as $dato) { ?>
+					<?php $a = 1;
+					foreach ($datos as $dato) { ?>
 						<tr>
 							<td><?php echo $a; ?></td>
 							<td><?php echo $dato->nombre; ?></td>
@@ -47,7 +43,8 @@
 								</a>
 							</td>
 						</tr>
-					<?php $a++; } ?>
+					<?php $a++;
+					} ?>
 				</tbody>
 			</table>
 		</div>
@@ -79,7 +76,7 @@
 <script>
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-		
+
 		$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 	});
-</script>	
+</script>

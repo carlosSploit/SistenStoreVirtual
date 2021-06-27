@@ -1,22 +1,19 @@
-<!--
-	Copyright (c) 2019 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
-	$(document).ready(function(e){
-		var base_url = "<?php echo base_url();?>";
+	$(document).ready(function(e) {
+		var base_url = "<?php echo base_url(); ?>";
 		$('#dataTable').DataTable({
-			"pageLength" : 10,
+			"pageLength": 10,
 			"serverSide": true,
-			"order": [[0, "asc" ]],
-			"ajax":{
-					url :  base_url+'index.php/productos/mostrarProductos',
-					type : 'POST',
-					data: { activo: "0" }
-					},
+			"order": [
+				[0, "asc"]
+			],
+			"ajax": {
+				url: base_url + 'index.php/productos/mostrarProductos',
+				type: 'POST',
+				data: {
+					activo: "0"
+				}
+			},
 		});
 	});
 

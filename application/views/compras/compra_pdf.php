@@ -1,11 +1,4 @@
 <?php
-	/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
-	
 	ini_set('display_errors', 1);	
 	require APPPATH.'/third_party/fpdf/fpdf.php'; 
 	
@@ -88,5 +81,3 @@
 	$pdf->Cell(30, 4, '$ '.number_format($datosCompra->total, 2, ',', '.'), 0,1,'R');
 	
 	$pdf->Output("compra_pdf.pdf", 'I');
-	
-?>							

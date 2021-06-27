@@ -3,17 +3,17 @@
 
 <!-- Sticky Footer -->
 <footer class="sticky-footer">
-	<div class="container my-auto">
-		<div class="copyright text-center my-auto">
-		<div class="text-muted">Copyright &copy; Sitio Web <?php echo date('Y'); ?></div>
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <div class="text-muted">Copyright &copy; Sitio Web <?php echo date('Y'); ?></div>
             <div>
                 <a href="#">Privacy Policy </a>
-                <a href="https://web.facebook.com/PRODUC.REGIONALES.LONUESTRO"target="_blank"> Facebook</a>
+                <a href="https://web.facebook.com/PRODUC.REGIONALES.LONUESTRO" target="_blank"> Facebook</a>
                 &middot;
                 <a href="#">Terms &amp; Conditions</a>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 </footer>
 
 </div>
@@ -21,6 +21,10 @@
 
 </div>
 <!-- /#wrapper -->
+
+<!----------------------Alerta en messeng----------------------->
+<div id="vanillatoasts-container" class="toasts-top-right"></div>
+<!-------------------------------------------------------------->
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
@@ -41,8 +45,48 @@
 <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url() ?>js/sb-admin.min.js"></script>
 
+<!-- Custom scripts for all page-->
+
+
 <!-- Demo scripts for this page-->
 <script src="<?php echo base_url() ?>js/demo/chart-area-demo.js"></script>
+
+<script type="text/javascript">
+    function notify(tip, title, messegng, poss, tipmess) {
+        switch (tipmess) {
+            case "success":
+                img = "https://www.institutoncologicofalp.cl/wp-content/uploads/2020/05/okfalparchivos.png";
+                break;
+            case "error":
+                img = "https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png";
+                break;
+            default:
+                break;
+        }
+        switch (poss) {
+            case 'R':
+                $('#vanillatoasts-container').attr('class', 'toasts-top-right');
+                VanillaToasts.create({
+                    title: title,
+                    text: messegng,
+                    type: tipmess,
+                    icon: img,
+                    timeout: 2000
+                });
+                break;
+            default:
+                $('#vanillatoasts-container').attr('class', 'toasts-top-left');
+                VanillaToasts.create({
+                    title: title,
+                    text: messegng,
+                    type: tipmess,
+                    icon: img,
+                    timeout: 2000
+                });
+                break;
+        };
+    }
+</script>
 
 </body>
 

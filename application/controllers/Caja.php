@@ -1,10 +1,4 @@
 <?php
-/*
-		Copyright (c) 2020 Codigos de Programacion
-		Punto de Venta CDP
-		Desarrollado por Codigos de Programacion
-		www.codigosdeprogramacion.com
-	*/
 class caja extends CI_Controller
 {
 	public function __construct()
@@ -83,13 +77,13 @@ class caja extends CI_Controller
 	{
 		$datos = $this->movimientosModel->porIdProductoTransaccion($id_producto, $id_venta, 'V');
 		if ($datos) {
-			if ($datos->cantidad > 1) {
-				$cantidad = $datos->cantidad - 1;
-				$subtotal = $cantidad * $datos->precio;
-				$this->movimientosModel->actualizaProductoTransaccion($id_producto, $id_venta, 'V', $cantidad, $subtotal);
-			} else {
-				$this->movimientosModel->eliminar($id_producto, $id_venta);
-			}
+			// if ($datos->cantidad > 1) {
+			// 	$cantidad = $datos->cantidad - 1;
+			// 	$subtotal = $cantidad * $datos->precio;
+			// 	$this->movimientosModel->actualizaProductoTransaccion($id_producto, $id_venta, 'V', $cantidad, $subtotal);
+			// } else {
+			$this->movimientosModel->eliminar($id_producto, $id_venta);
+			// }
 		}
 		$res['datos'] = $this->cargaProductosCaja($id_venta);
 		$res['total'] = number_format(round($this->totalProductosCaja($id_venta), 2), 2, '.', ',');

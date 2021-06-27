@@ -108,7 +108,7 @@ class pedido extends CI_Controller
         // $dir = "";
 
         //$aColumns = array('ventas.id', 'pedido.id_pedido', 'pedido.folio', 'clientes.nombre', 'pedido.direccion', 'pedido.telefono', 'pedido.estado');
-        $aColumns = array('ventas.id', 'pedido.id_pedido', 'pedido.folio', 'clientes.nombre', 'pedido.direccion', 'pedido.telefono', 'pedido.estado');
+        $aColumns = array('ventas.id', 'pedido.id_pedido', 'pedido.folio', 'clientes.nombre', 'pedido.direccion', 'pedido.telefono', 'pedido.datep', 'pedido.estado');
         $sTable = "pedido";
         $sWhere = "1";
         //$sWhereOrg = "pedido.estado < 2";
@@ -159,7 +159,7 @@ class pedido extends CI_Controller
             foreach ($prodcutos->result() as $rows) {
                 if (($rows->estado) < 3) {
                     $data[] = array(
-                        $rows->folio, $rows->nombre, $rows->direccion, $rows->telefono,
+                        $rows->folio, $rows->nombre, $rows->direccion, $rows->telefono, (($rows->datep !== NULL) ? $rows->datep : 'Fecha Des.'),
                         "<div class='row m-0 justify-content-center col-auto'>" . "<div class='form-check form-check-inline'>" . "<input class='form-check-input' type='radio' name='opcionbuton" . $rows->id_pedido . "' onclick='ActualEstado(" . $rows->id_pedido . ",0," . $rows->id . ")' id='opcionbuton" . $rows->id_pedido . "' value='option1' " . ((($rows->estado) == 0) ? "checked" : "") . ">" . "<input class='form-check-input' type='radio' name='opcionbuton" . $rows->id_pedido . "' onclick='ActualEstado(" . $rows->id_pedido . ",1," . $rows->id . ")' id='opcionbuton" . $rows->id_pedido . "' value='option2' " . ((($rows->estado) == 1) ? "checked" : "") . ">" . "<input class='form-check-input' type='radio' name='opcionbuton" . $rows->id_pedido . "' onclick='ActualEstado(" . $rows->id_pedido . ",2," . $rows->id . ")' id='opcionbuton" . $rows->id_pedido . "' value='option3' " . ((($rows->estado) == 2) ? "checked" : "") . ">" . "</div>" . "</div>",
                         "<a href='" . base_url() . "index.php/pedido/editar/" . $rows->id_pedido . "' class='button' data-toggle='tooltip'  data-placement='top' title='Editar pedido' ><span class='fas fa-edit'></span></a>",
                         "<a href='" . base_url() . "index.php/caja/muestraTicket/" . $rows->id . "' class='button' data-toggle='tooltip'  data-placement='top' title='Ver ticket' ><span class='fas fa-list-alt'></span></a>",

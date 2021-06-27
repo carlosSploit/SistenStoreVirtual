@@ -1,22 +1,19 @@
-<!--
-	Copyright (c) 2019 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
-	$(document).ready(function(e){
-		var base_url = "<?php echo base_url();?>";
+	$(document).ready(function(e) {
+		var base_url = "<?php echo base_url(); ?>";
 		$('#dataTable').DataTable({
-			"pageLength" : 10,
+			"pageLength": 10,
 			"serverSide": true,
-			"order": [[0, "asc" ]],
-			"ajax":{
-					url :  base_url+'index.php/clientes/mostrarClientes',
-					type : 'POST',
-					data: { activo: "1" }
-					},
+			"order": [
+				[0, "asc"]
+			],
+			"ajax": {
+				url: base_url + 'index.php/clientes/mostrarClientes',
+				type: 'POST',
+				data: {
+					activo: "1"
+				}
+			},
 		});
 	});
 
@@ -34,7 +31,7 @@
 				<a href="<?php echo base_url() ?>index.php/clientes/eliminados" class="btn btn-warning">Eliminados</a>
 			</p>
 		</div>
-		
+
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
 				<thead>
@@ -80,7 +77,7 @@
 <script>
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-		
+
 		$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 	});
 </script>

@@ -1,10 +1,3 @@
-<!--
-	Copyright (c) 2019 Codigos de Programacion
-	Punto de Venta CDP
-	Desarrollado por Codigos de Programacion
-	www.codigosdeprogramacion.com
--->
-
 <script>
 	$(document).ready(function() {
 		$('#dataTable').DataTable({
@@ -26,7 +19,7 @@
 				<a href="<?php echo base_url() ?>index.php/cajas/eliminados" class="btn btn-warning">Eliminados</a>
 			</p>
 		</div>
-			
+
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
 				<thead>
@@ -40,7 +33,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php $a=1; foreach ($datos as $dato) { ?>
+					<?php $a = 1;
+					foreach ($datos as $dato) { ?>
 						<tr>
 							<td><?php echo $a; ?></td>
 							<td><?php echo $dato->no_caja; ?></td>
@@ -57,7 +51,8 @@
 								</a>
 							</td>
 						</tr>
-					<?php $a++; } ?>
+					<?php $a++;
+					} ?>
 				</tbody>
 			</table>
 		</div>
@@ -89,7 +84,7 @@
 <script>
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-		
+
 		$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 	});
 </script>
