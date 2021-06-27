@@ -49,6 +49,13 @@
 </div>
 
 <script type="text/javascript">
+	function validador() {
+		var valida = false;
+		if (($("#password").val() != "") && ($("#repassword").val() != "")) {
+			valida = true;
+		}
+		return valida;
+	}
 	$(document).on("keypress", 'form', function(e) {
 		var code = e.keyCode || e.which;
 		console.log(code);

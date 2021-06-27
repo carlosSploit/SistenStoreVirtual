@@ -117,13 +117,13 @@
 			notify(1, "Editar", "Producto se a editado con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Editar", "Producto se a editado con exito", 'R', "error");
+			notify(1, "Editar", "Error al editar un producto", 'R', "error");
 		}
 	});
 
 	function validador() {
 		var valida = false;
-		if (($("#codigo").val() != "") || ($("#nombre").val() != "") || ($("#id_unidad").val() != "") || ($("#id_categoria").val() != "") || ($("#precio_venta").val() != "") || ($("#precio_compra").val() != "") || ($("#inventariable").val() != "") || ($("#stock_minimo").val() != "")) {
+		if ((($("#codigo").val() != "") && ($("#nombre").val() != "") && ($("#id_unidad").val() != "") && ($("#id_categoria").val() != "") && ($("#precio_venta").val() != "")) || ($("#precio_compra").val() != "") || ($("#stock_minimo").val() != "")) {
 			valida = true;
 		}
 		return valida;

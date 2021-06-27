@@ -9,7 +9,7 @@
 			</div>
 		<?php endif; ?>
 
-		<form method="post" action="<?php echo base_url() ?>index.php/usuarios/insertar" autocomplete="off">
+		<form id="form_usuarios" method="post" action="<?php echo base_url() ?>index.php/usuarios/insertar" autocomplete="off">
 
 			<div class="form-group">
 				<div class="row">
@@ -73,12 +73,36 @@
 			</div>
 
 			<a href="<?php echo base_url() ?>index.php/usuarios" class="btn btn-primary">Volver</a>
-			<button class="btn btn-success" type="submit">Guardar</button>
+			<button class="btn btn-success" type="button" id="guardar">Guardar</button>
 		</form>
 	</div>
 </div>
 
 <script type="text/javascript">
+	/* validaion */
+
+	$("#guardar").click(function(e) {
+		if (validador()) {
+			console.log("hola");
+			notify(1, "Agregar", "Usuario se agregar con exito", 'R', "success");
+			setTimeout(messeg(), 4000);
+		} else {
+			notify(1, "Agregar", "Error al agregar el Usuario", 'R', "error");
+		}
+	});
+
+	function validador() {
+		var valida = false;
+		if (($("#usuario").val() != "") && ($("#nombre").val() != "") && ($("#password").val() != "") && ($("#repassword").val() != "") && ($("#id_rol").val() != "") && ($("#id_caja").val() != "")) {
+			valida = true;
+		}
+		return valida;
+	}
+
+	function messeg() {
+		$("#form_usuarios").submit();
+	}
+
 	function validaUsuario(usuario, tagUsuario, tagSpan) {
 
 		$.ajax({

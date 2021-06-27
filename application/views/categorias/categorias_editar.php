@@ -48,10 +48,10 @@
 
 	$("#guardar").click(function(e) {
 		if (validador()) {
-			notify(1, "Editar", "La Categoria se a editar con exito", 'R', "success");
+			notify(1, "Editar", "La Categoria se editadó con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Editar", "La Categoria se a editar con exito", 'R', "error");
+			notify(1, "Editar", "Error al editar Categoria", 'R', "error");
 		}
 	});
 

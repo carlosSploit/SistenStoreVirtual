@@ -71,17 +71,17 @@
 
     $("#butacped").click(function(e) {
         if (validador()) {
-            notify(1, "Insertar", "El pedido se a editado con exito", 'R', "success");
+            notify(1, "Editar", "El pedido se a editado con exito", 'R', "success");
             setTimeout(messeg(), 4000);
         } else {
-            notify(1, "Insertar", "La Categoria se a insertado con exito", 'R', "error");
+            notify(1, "Editar", "Error al editar el pedido", 'R', "error");
         }
     });
 
     /* Validacion de agregar */
     function validador() {
         var valida = false;
-        if (($("#direccion").val() != "") || ($("#telefono").val() != "") || ($("#datep").val() != "")) {
+        if (($("#direccion").val() != "") && ($("#telefono").val() != "") && ($("#datep").val() != "")) {
             valida = true;
         }
         return valida;

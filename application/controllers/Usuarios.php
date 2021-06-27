@@ -93,7 +93,7 @@ class usuarios extends CI_Controller
 	}
 
 	//Cargar vista editar public function editar($id, $funcion)
-	public function editar($id)
+	public function editar($id, $funcion)
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -103,7 +103,7 @@ class usuarios extends CI_Controller
 		$cajas = $this->cajasModel->obtenerCajas(1);
 		$data['roles'] = $roles;
 		$data['cajas'] = $cajas;
-		//$data['funcion'] = $funcion;
+		$data['funcion'] = $funcion;
 		$data['title'] = 'Modificar usuario';
 		$data['dato'] = $datoParaEditar;
 		$this->load->view("encabezado");
@@ -139,10 +139,10 @@ class usuarios extends CI_Controller
 			if ($resultado) {
 				redirect("usuarios/");
 			} else {
-				$this->editar($id);
+				$this->editar($id, 0);
 			}
 		} else {
-			$this->editar($id);
+			$this->editar($id, 0);
 		}
 	}
 

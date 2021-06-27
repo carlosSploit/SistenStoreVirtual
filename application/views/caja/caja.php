@@ -256,7 +256,7 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 		*/
 		function validad() {
 			var band = false;
-			if (($("#telf").val() != "") || ($("#direc").val() != "")) {
+			if (($("#telf").val() != "") && ($("#direc").val() != "")) {
 				band = true;
 			}
 			return band;

@@ -3,12 +3,12 @@
 
 		<h4><?php echo $title; ?></h4>
 
-		<?php if (validation_errors()) : ?>
+		<!-- < if (validation_errors()) : ?>
 			<div class="alert alert-danger col-md-12" role="alert">
-				<?php echo validation_errors();  ?>
+				< echo validation_errors();  ?>
 			</div>
 
-		<?php endif; ?>
+		< endif; ?> -->
 
 		<form id="form_unida" method="post" action="<?php echo base_url() ?>index.php/unidades/insertar" autocomplete="off">
 			<div class="form-group">
@@ -53,23 +53,23 @@
 
 	$("#guardar").click(function(e) {
 		if (validador()) {
-			notify(1, "Insertar", "La unidad se a insertado con exito", 'R', "success");
+			notify(1, "Agregar", "La unidad se agregadó con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Insertar", "La unidad se a insertado con exito", 'R', "error");
+			notify(1, "Agregar", "Error al agregar La unidad", 'R', "error");
 		}
 	});
 
 	function validador() {
 		var valida = false;
-		if (($("#nombre").val() != "") || ($("#nombre_corto").val() != "")) {
+		if (($("#nombre").val() != "") && ($("#nombre_corto").val() != "")) {
 			valida = true;
 		}
 		return valida;
 	}
 
 	function messeg() {
-		$("#form_unida").submit();
+		//$("#form_unida").submit();
 	}
 
 	function validaNombre(nombre, tagNombre, tagSpan) {

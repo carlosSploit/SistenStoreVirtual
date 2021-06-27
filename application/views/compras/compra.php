@@ -203,13 +203,17 @@ $idCompraTmp = uniqid();
 			var nFilas = $("#tablaProductos tr").length;
 
 			if (nFilas < 2) {
-				$('#modalito').modal('show');
-				muestraModal('Aviso', 'Debe agregar un producto para completar la compra.');
+				notify(1, "Insercion", "Error al ingresar la compra", 'R', "error");
 			} else {
-				$("#form_compra").submit();
+				notify(1, "Insercion", "La compra se a ingresado con exito", 'R', "success");
+				setTimeout(metSub(), 4000);
 			}
 		});
 	});
+
+	function metSub() {
+		$("#form_compra").submit();
+	}
 
 	function filterFloat(evt, input) {
 		// Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ‘.’ = 46, ‘-’ = 43

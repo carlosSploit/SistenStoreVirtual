@@ -47,17 +47,17 @@
 <script type="text/javascript">
 	$("#butacped").click(function(e) {
 		if (validador()) {
-			notify(1, "Insertar", "El pedido se a editado con exito", 'R', "success");
+			notify(1, "Realizo", "El reporte se realizó con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Insertar", "La Categoria se a insertado con exito", 'R', "error");
+			notify(1, "Realizo", "Error de reporte", 'R', "error");
 		}
 	});
 
 	/* Validacion de agregar */
 	function validador() {
 		var valida = false;
-		if (($("#fecha_inicio").val() != "") || ($("#fecha_fin").val() != "") || ($("#caja").val() != "")) {
+		if (($("#fecha_inicio").val() != "") && ($("#fecha_fin").val() != "") && ($("#caja").val() != "")) {
 			valida = true;
 		}
 		return valida;

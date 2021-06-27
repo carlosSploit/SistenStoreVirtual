@@ -107,7 +107,7 @@
 	function validaCodigo(codigo, tagCodigo, tagSpan) {
 		if (codigo != '' || codigo !== null) {
 			$.ajax({
-				url: '<?php echo base_url(); ?>index.php/productos/validarCodigo/' + codigo,
+				url: '< echo base_url(); ?>index.php/productos/validarCodigo/' + codigo,
 				success: function(response) {
 					if (response > 0) {
 						$(tagSpan).text('El codigo ya existe');
@@ -130,32 +130,33 @@
 <script type="text/javascript">
 	$("#guardar").click(function(e) {
 		if (validador()) {
-			notify(1, "Insercion", "Producto se a ingresado con exito", 'R', "success");
+			console.log("hola");
+			notify(1, "Agregar", "Producto se agregadó con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Insercion", "Producto se a ingresado con exito", 'R', "error");
+			notify(1, "Agregar", "Error al agregar el producto", 'R', "error");
 		}
 	});
 
 	function validador() {
 		var valida = false;
-		if (($("#codigo").val() != "") || ($("#nombre").val() != "") || ($("#id_unidad").val() != "") || ($("#id_categoria").val() != "") || ($("#precio_venta").val() != "") || ($("#precio_compra").val() != "") || ($("#inventariable").val() != "") || ($("#stock_minimo").val() != "")) {
+		if ((($("#codigo").val() != "") && ($("#nombre").val() != "") && ($("#id_unidad").val() != "") && ($("#id_categoria").val() != "") && ($("#precio_venta").val() != "")) || ($("#precio_compra").val() != "") || ($("#stock_minimo").val() != "")) {
 			valida = true;
 		}
 		return valida;
 	}
 
 	function messeg() {
-		$("#form_product").submit();
+		//$("#form_product").submit();
 	}
 
-	$(document).on("keypress", 'form', function(e) {
-		var code = e.keyCode || e.which;
-		if (code == 13) {
-			e.preventDefault();
-			return false;
-		}
-	});
+	// $(document).on("keypress", 'form', function(e) {
+	// 	var code = e.keyCode || e.which;
+	// 	if (code == 13) {
+	// 		e.preventDefault();
+	// 		return false;
+	// 	}
+	// });
 
 	function validateDecimal(valor) {
 		var RE = /^\d*\.?\d*$/;

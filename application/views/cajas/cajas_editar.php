@@ -9,7 +9,7 @@
 			</div>
 		<?php endif; ?>
 
-		<form method="post" action="<?php echo base_url() ?>index.php/cajas/actualizar" autocomplete="off">
+		<form id="form_cajas" method="post" action="<?php echo base_url() ?>index.php/cajas/actualizar" autocomplete="off">
 
 			<input type="hidden" name="id" value="<?php echo $dato->id; ?>">
 
@@ -45,12 +45,34 @@
 			</div>
 
 			<a href="<?php echo base_url() ?>index.php/cajas" class="btn btn-primary">Volver</a>
-			<button class="btn btn-success" type="submit">Guardar</button>
+			<button class="btn btn-success" type="button" id="guardar">Guardar</button>
 		</form>
 	</div>
 </div>
 
 <script type="text/javascript">
+	$("#guardar").click(function(e) {
+		if (validador()) {
+			console.log("hola");
+			notify(1, "Editar", "La caja se a editadó con exito", 'R', "success");
+			setTimeout(messeg(), 4000);
+		} else {
+			notify(1, "Editar", "Error al editar la caja", 'R', "error");
+		}
+	});
+
+	function validador() {
+		var valida = false;
+		if (($("#no_caja").val() != "") && ($("#nombre").val() != "") && ($("#remision").val() != "")) {
+			valida = true;
+		}
+		return valida;
+	}
+
+	function messeg() {
+		$("#form_cajas").submit();
+	}
+
 	$(document).on("keypress", 'form', function(e) {
 		var code = e.keyCode || e.which;
 		console.log(code);

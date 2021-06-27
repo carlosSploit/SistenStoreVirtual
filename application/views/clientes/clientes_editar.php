@@ -66,9 +66,18 @@
 		}
 	});
 
+	$("#guardar").click(function(e) {
+		if (validador()) {
+			notify(1, "Editar", "El cliente se editó con exito", 'R', "success");
+			setTimeout(messeg(), 4000);
+		} else {
+			notify(1, "Editar", "Error al editar cliente", 'R', "error");
+		}
+	});
+
 	function validador() {
 		var valida = false;
-		if (($("#nombre").val() != "") || ($("#direccion").val() != "") || ($("#telefono").val() != "") || ($("#correo").val() != "")) {
+		if (($("#nombre").val() != "") && (($("#direccion").val() != "") || ($("#telefono").val() != "") || ($("#correo").val() != ""))) {
 			valida = true;
 		}
 		return valida;

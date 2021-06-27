@@ -36,11 +36,11 @@
 
 <script type="text/javascript">
 	$("#guardar").click(function(e) {
-		if (validador()) {
-			notify(1, "Insertar", "La Categoria se a insertado con exito", 'R', "success");
+		if (validad()) {
+			notify(1, "Agregar", "La Categoria se a agregadó con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Insertar", "La Categoria se a insertado con exito", 'R', "error");
+			notify(1, "Agregar", "Error al agregar Categoria", 'R', "error");
 		}
 	});
 

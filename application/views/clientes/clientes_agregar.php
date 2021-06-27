@@ -68,16 +68,16 @@
 
 	$("#guardar").click(function(e) {
 		if (validador()) {
-			notify(1, "Insertar", "El cliente se a insertado con exito", 'R', "success");
+			notify(1, "Agregar", "El cliente se agregó con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Insertar", "El cliente se a insertado con exito", 'R', "error");
+			notify(1, "Agregar", "Error al agregar cliente", 'R', "error");
 		}
 	});
 
 	function validador() {
 		var valida = false;
-		if (($("#nombre").val() != "") || ($("#direccion").val() != "") || ($("#telefono").val() != "") || ($("#correo").val() != "")) {
+		if (($("#nombre").val() != "") && (($("#direccion").val() != "") || ($("#telefono").val() != "") || ($("#correo").val() != ""))) {
 			valida = true;
 		}
 		return valida;

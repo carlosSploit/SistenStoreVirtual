@@ -58,13 +58,13 @@
 			notify(1, "Editar", "La unidad se a editado con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
-			notify(1, "Editar", "La unidad se a editado con exito", 'R', "error");
+			notify(1, "Editar", "Error al editar La unidad", 'R', "error");
 		}
 	});
 
 	function validador() {
 		var valida = false;
-		if (($("#nombre").val() != "") || ($("#nombre_corto").val() != "")) {
+		if (($("#nombre").val() != "") && ($("#nombre_corto").val() != "")) {
 			valida = true;
 		}
 		return valida;
