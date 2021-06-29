@@ -11,7 +11,7 @@ class clientes extends CI_Controller
 	}
 
 	//Cargar catalogo
-	public function index()
+	public function index($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -20,11 +20,14 @@ class clientes extends CI_Controller
 		$datos["datos"] = $this->clientesModel->obtener(1);
 		$this->load->view("encabezado");
 		$this->load->view("clientes/clientes", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Cargar catalogo eliminados
-	public function eliminados()
+	public function eliminados($id1 = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -33,11 +36,14 @@ class clientes extends CI_Controller
 		$datos["datos"] = $this->clientesModel->obtener(0);
 		$this->load->view("encabezado");
 		$this->load->view("clientes/clientes_eliminados", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Cargar vista nuevo
-	public function agregar()
+	public function agregar($id1 = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -45,7 +51,10 @@ class clientes extends CI_Controller
 		$data['title'] = 'Agregar cliente';
 		$this->load->view("encabezado");
 		$this->load->view("clientes/clientes_agregar", $data);
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Inserta y valida formulario nuevo 
@@ -62,17 +71,17 @@ class clientes extends CI_Controller
 		if ($this->form_validation->run() == TRUE) {
 			$resultado = $this->clientesModel->insertar($nombre, $direccion, $telefono, $correo, 1);
 			if ($resultado) {
-				redirect("clientes/");
+				$this->index(1, "El cliente se a ingresado con exito", "success");
 			} else {
-				$this->agregar();
+				$this->agregar(1, "Error al ingresar el cliente", "error");
 			}
 		} else {
-			$this->agregar();
+			$this->agregar(1, "Error al ingresar el cliente", "error");
 		}
 	}
 
 	//Cargar vista editar
-	public function editar($id)
+	public function editar($id, $id1 = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -82,30 +91,37 @@ class clientes extends CI_Controller
 		$data['dato'] = $datoParaEditar;
 		$this->load->view("encabezado");
 		$this->load->view("clientes/clientes_editar", $data);
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Actualiza y valida formulario editar 
 	public function actualizar()
 	{
-		$id = $this->input->post("id");
-		$nombre = $this->input->post("nombre");
-		$direccion = $this->input->post("direccion");
-		$telefono = $this->input->post("telefono");
-		$correo = $this->input->post("correo");
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required');
-		$this->form_validation->set_message('required', 'El campo {field} es obligatorio.');
+		if (isset($_POST["id"])) {
+			$id = $this->input->post("id");
+			$nombre = $this->input->post("nombre");
+			$direccion = $this->input->post("direccion");
+			$telefono = $this->input->post("telefono");
+			$correo = $this->input->post("correo");
+			$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+			$this->form_validation->set_message('required', 'El campo {field} es obligatorio.');
 
-		if ($this->form_validation->run() == TRUE) {
-			$resultado = $this->clientesModel->guardarCambios($id, $nombre, $direccion, $telefono, $correo, 1);
+			if ($this->form_validation->run() == TRUE) {
+				$resultado = $this->clientesModel->guardarCambios($id, $nombre, $direccion, $telefono, $correo, 1);
 
-			if ($resultado) {
-				redirect("clientes/");
+				if ($resultado) {
+					$this->index(1, "El cliente se a actualizado con exito", "success");
+				} else {
+					$this->editar($id, 1, "Error al actualizar el cliente", "error");
+				}
 			} else {
-				$this->editar($id);
+				$this->editar($id, 1, "Error al actualizar el cliente", "error");
 			}
 		} else {
-			$this->editar($id);
+			redirect("/clientes");
 		}
 	}
 
@@ -113,7 +129,7 @@ class clientes extends CI_Controller
 	public function eliminar($id)
 	{
 		$resultado = $this->clientesModel->eliminar($id);
-		redirect("clientes/");
+		$this->index(1, "El cliente se a eliminado con exito", "success");
 	}
 
 	//Reingresa producto

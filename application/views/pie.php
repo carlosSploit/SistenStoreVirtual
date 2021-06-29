@@ -46,7 +46,7 @@
 <script src="<?php echo base_url() ?>js/sb-admin.min.js"></script>
 
 <!-- Custom scripts for all page-->
-
+<script src="<?php echo base_url() ?>js/valida_seld_basic.js"></script>
 
 <!-- Demo scripts for this page-->
 <script src="<?php echo base_url() ?>js/demo/chart-area-demo.js"></script>
@@ -87,7 +87,22 @@
         };
     }
 </script>
-
+<?php
+$variable = 'id';
+if (isset($variable)) : ?>
+    <?php
+    try {
+        if ($id == 1) :
+            echo '<script type="text/javascript">
+            $(document).ready(function() {
+                notify(1, "Editar", "' . $mesg . '" , "R", "' . $estade . '");
+            });
+            </script>';
+        endif;
+    } catch (Exception $e) {
+    }
+    ?>
+<?php endif ?>
 </body>
 
 </html>

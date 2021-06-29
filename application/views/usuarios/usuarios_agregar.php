@@ -3,11 +3,11 @@
 
 		<h4><?php echo $title; ?></h4>
 
-		<?php if (validation_errors()) : ?>
+		<!-- < if (validation_errors()) : ?>
 			<div class="alert alert-danger" role="alert">
-				<?php echo validation_errors();  ?>
+				< echo validation_errors();  ?>
 			</div>
-		<?php endif; ?>
+		< endif; ?> -->
 
 		<form id="form_usuarios" method="post" action="<?php echo base_url() ?>index.php/usuarios/insertar" autocomplete="off">
 
@@ -15,13 +15,13 @@
 				<div class="row">
 					<div id="divUsuario" class="col-12 col-sm-6">
 						<label for="usuario"><span class="text-danger">*</span>Usuario:</label>
-						<input class="form-control" id="usuario" type="text" name="usuario" aria-describedby="helpUsuario" onBlur="validaUsuario(this.value, this, '.help-block');" placeholder="Escribe aquí el usuario" value="<?php echo set_value('usuario'); ?>" autofocus required>
+						<input onkeypress="limit(this.value,'usuario',30)" class="form-control" id="usuario" type="text" name="usuario" aria-describedby="helpUsuario" onBlur="validaUsuario(this.value, this, '.help-block');" placeholder="Escribe aquí el usuario" value="<?php echo set_value('usuario'); ?>" autofocus>
 						<span class="help-block"></span>
 					</div>
 
 					<div class="col-12 col-sm-6">
 						<label for="nombre"><span class="text-danger">*</span>Nombre:</label>
-						<input class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo set_value('nombre'); ?>" required>
+						<input onkeypress="limit(this.value,'nombre',100)" class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo set_value('nombre'); ?>">
 					</div>
 				</div>
 			</div>
@@ -30,12 +30,12 @@
 				<div class="row">
 					<div class="col-12 col-sm-6">
 						<label for="password"><span class="text-danger">*</span>Contrase&ntilde;a:</label>
-						<input class="form-control" id="password" type="password" name="password" placeholder="Escribe aquí la contrase&ntilde;a" required>
+						<input onkeypress="limit(this.value,'password',8)" class="form-control" id="password" type="password" name="password" placeholder="Escribe aquí la contrase&ntilde;a">
 					</div>
 
 					<div class="col-12 col-sm-6">
 						<label for="repassword"><span class="text-danger">*</span>Confirmar contrase&ntilde;a:</label>
-						<input class="form-control" id="repassword" type="password" name="repassword" placeholder="Escribe aquí la contrase&ntilde;a" required>
+						<input onkeypress="limit(this.value,'repassword',8)" class="form-control" id="repassword" type="password" name="repassword" placeholder="Escribe aquí la contrase&ntilde;a">
 					</div>
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 				<div class="row">
 					<div class="col-12 col-sm-6">
 						<label for="id_rol"><span class="text-danger">*</span>Rol:</label>
-						<select class="form-control" id="id_rol" name="id_rol" required>
+						<select class="form-control" id="id_rol" name="id_rol">
 							<option value="">Seleccionar rol</option>
 							<?php foreach ($roles as $rol) { ?>
 								<option value="<?php echo $rol->id; ?>"><?php echo $rol->nombre; ?></option>
@@ -54,7 +54,7 @@
 
 					<div class="col-12 col-sm-6">
 						<label for="id_caja"><span class="text-danger">*</span>Caja:</label>
-						<select class="form-control" id="id_caja" name="id_caja" required>
+						<select class="form-control" id="id_caja" name="id_caja">
 							<option value="">Seleccionar caja</option>
 							<?php foreach ($cajas as $caja) { ?>
 								<option value="<?php echo $caja->id; ?>"><?php echo $caja->nombre; ?></option>
@@ -73,36 +73,13 @@
 			</div>
 
 			<a href="<?php echo base_url() ?>index.php/usuarios" class="btn btn-primary">Volver</a>
-			<button class="btn btn-success" type="button" id="guardar">Guardar</button>
+			<button class="btn btn-success" type="submit" id="guardar">Guardar</button>
 		</form>
 	</div>
 </div>
 
 <script type="text/javascript">
 	/* validaion */
-
-	$("#guardar").click(function(e) {
-		if (validador()) {
-			console.log("hola");
-			notify(1, "Agregar", "Usuario se agregar con exito", 'R', "success");
-			setTimeout(messeg(), 4000);
-		} else {
-			notify(1, "Agregar", "Error al agregar el Usuario", 'R', "error");
-		}
-	});
-
-	function validador() {
-		var valida = false;
-		if (($("#usuario").val() != "") && ($("#nombre").val() != "") && ($("#password").val() != "") && ($("#repassword").val() != "") && ($("#id_rol").val() != "") && ($("#id_caja").val() != "")) {
-			valida = true;
-		}
-		return valida;
-	}
-
-	function messeg() {
-		$("#form_usuarios").submit();
-	}
-
 	function validaUsuario(usuario, tagUsuario, tagSpan) {
 
 		$.ajax({

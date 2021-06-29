@@ -22,13 +22,13 @@
 					<div class="row">
 						<div class="col-4">
 							<label for="codigo"><span class="text-danger">*</span>C&oacute;digo</label>
-							<input class="form-control" id="codigo" type="text" name="codigo" aria-describedby="helpCodigo" onBlur="validaCodigo(this.value, this, '.help-block');" placeholder="Escribe aquí el código del producto" autofocus required>
+							<input onkeypress="limit(this.value,'codigo',20)" class="form-control" id="codigo" type="text" name="codigo" aria-describedby="helpCodigo" onBlur="validaCodigo(this.value, this, '.help-block');" placeholder="Escribe aquí el código del producto" autofocus>
 							<span class="help-block"></span>
 						</div>
 
 						<div class="col-8">
 							<label for="nombre"><span class="text-danger">*</span>Nombre</label>
-							<input class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" required>
+							<input onkeypress="limit(this.value,'nombre',200)" class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre">
 						</div>
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 					<div class="row">
 						<div class="col">
 							<label for="id_unidad"><span class="text-danger">*</span>Unidad</label>
-							<select class="form-control" id="id_unidad" name="id_unidad" required>
+							<select class="form-control" id="id_unidad" name="id_unidad">
 								<option value="">Seleccione unidad</option>
 								<?php foreach ($unidades as $uni) { ?>
 									<option value="<?php echo $uni->id; ?>"><?php echo $uni->nombre; ?></option>
@@ -47,7 +47,7 @@
 
 						<div class="col">
 							<label for="id_categoria"><span class="text-danger">*</span>Categor&iacute;a</label>
-							<select class="form-control" id="id_categoria" name="id_categoria" required>
+							<select class="form-control" id="id_categoria" name="id_categoria">
 								<option value="">Seleccione categor&iacute;a</option>
 								<?php foreach ($categorias as $cat) { ?>
 									<option value="<?php echo $cat->id; ?>"><?php echo $cat->nombre; ?></option>
@@ -61,12 +61,12 @@
 					<div class="row">
 						<div class="col">
 							<label for="precio_venta"><span class="text-danger">*</span>Precio de venta</label>
-							<input class="form-control" id="precio_venta" type="text" name="precio_venta" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de venta" required>
+							<input onkeypress="limit(this.value,'precio_venta',12)" class="form-control" id="precio_venta" type="number" name="precio_venta" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de venta">
 						</div>
 
 						<div class="col">
 							<label for="precio_compra">Precio de compra</label>
-							<input class="form-control" id="precio_compra" type="text" name="precio_compra" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de compra">
+							<input onkeypress="limit(this.value,'precio_compra',12)" class="form-control" id="precio_compra" type="number" name="precio_compra" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de compra">
 						</div>
 					</div>
 				</div>
@@ -83,7 +83,7 @@
 
 						<div class="col">
 							<label for="precio_compra">Stock m&iacute;nimo</label>
-							<input class="form-control" id="stock_minimo" name="stock_minimo" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el stock m&iacute;nimo">
+							<input onkeypress="limit(this.value,'stock_minimo',5)" type="number" class="form-control" id="stock_minimo" name="stock_minimo" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el stock m&iacute;nimo">
 						</div>
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 				</div>
 
 				<a href="<?php echo base_url() ?>index.php/productos" class="btn btn-primary">Volver</a>
-				<button class="btn btn-success" type="button" id="guardar">Guardar</button>
+				<button class="btn btn-success" type="submit" id="">Guardar</button>
 			</form>
 		</div>
 	</div>
@@ -128,28 +128,6 @@
 </script>
 
 <script type="text/javascript">
-	$("#guardar").click(function(e) {
-		if (validador()) {
-			console.log("hola");
-			notify(1, "Agregar", "Producto se agregadó con exito", 'R', "success");
-			setTimeout(messeg(), 4000);
-		} else {
-			notify(1, "Agregar", "Error al agregar el producto", 'R', "error");
-		}
-	});
-
-	function validador() {
-		var valida = false;
-		if ((($("#codigo").val() != "") && ($("#nombre").val() != "") && ($("#id_unidad").val() != "") && ($("#id_categoria").val() != "") && ($("#precio_venta").val() != "")) || ($("#precio_compra").val() != "") || ($("#stock_minimo").val() != "")) {
-			valida = true;
-		}
-		return valida;
-	}
-
-	function messeg() {
-		//$("#form_product").submit();
-	}
-
 	// $(document).on("keypress", 'form', function(e) {
 	// 	var code = e.keyCode || e.which;
 	// 	if (code == 13) {

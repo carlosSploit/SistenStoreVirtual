@@ -11,14 +11,17 @@ class caja extends CI_Controller
 	}
 
 	//Carga caja
-	public function index()
+	public function index($id1 = 0, $mess = "Los graficos se realizaron con exito", $estade = "success")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
 		}
 		$this->load->view("encabezado");
 		$this->load->view("caja/caja", ["titulo" => "Caja"]);
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Busca producto por codigo e id_venta en tabla temporal
@@ -139,7 +142,7 @@ class caja extends CI_Controller
 	}
 
 	//Muestra ticket en div
-	function muestraTicket($id_venta)
+	function muestraTicket($id_venta, $id1 = 0, $mess = "Los graficos se realizaron con exito", $estade = "success")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -147,6 +150,9 @@ class caja extends CI_Controller
 		$data['id_venta'] = $id_venta;
 		$this->load->view("encabezado");
 		$this->load->view('caja/ver_ticket', $data);
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 }

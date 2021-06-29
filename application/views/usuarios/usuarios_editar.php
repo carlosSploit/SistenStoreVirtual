@@ -3,11 +3,11 @@
 
 		<h4><?php echo $title; ?></h4>
 
-		<?php if (validation_errors()) : ?>
+		<!-- < if (validation_errors()) : ?>
 			<div class="alert alert-danger" role="alert">
-				<?php echo validation_errors();  ?>
+				< echo validation_errors();  ?>
 			</div>
-		<?php endif; ?>
+		< endif; ?> -->
 
 		<form id="form_usuarios" method="post" action="<?php echo base_url() ?>index.php/usuarios/actualizar" autocomplete="off">
 
@@ -18,12 +18,12 @@
 				<div class="row">
 					<div class="col-12 col-sm-6">
 						<label for="usuario"><span class="text-danger">*</span>Usuario:</label>
-						<input class="form-control" id="usuario" type="text" name="usuario" placeholder="Escribe aquí el usuario" value="<?php echo $dato->usuario; ?>" readonly>
+						<input onkeypress="limit(this.value,'usuario',30)" class="form-control" id="usuario" type="text" name="usuario" placeholder="Escribe aquí el usuario" value="<?php echo $dato->usuario; ?>" readonly>
 					</div>
 
 					<div class="col-12 col-sm-6">
 						<label for="nombre"><span class="text-danger">*</span>Nombre:</label>
-						<input class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato->nombre; ?>" autofocus required>
+						<input onkeypress="limit(this.value,'nombre',100)" class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato->nombre; ?>" autofocus>
 					</div>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 				<div class="row">
 					<div class="col-12 col-sm-6">
 						<label for="id_rol"><span class="text-danger">*</span>Rol:</label>
-						<select class="form-control" id="id_rol" name="id_rol" required>
+						<select class="form-control" id="id_rol" name="id_rol">
 							<option value="">Seleccionar rol</option>
 							<?php foreach ($roles as $rol) { ?>
 								<option value="<?php echo $rol->id; ?>" <?php if ($rol->id == $dato->id_rol) {
@@ -44,7 +44,7 @@
 
 					<div class="col-12 col-sm-6">
 						<label for="id_caja"><span class="text-danger">*</span>Caja:</label>
-						<select class="form-control" id="id_caja" name="id_caja" required>
+						<select class="form-control" id="id_caja" name="id_caja">
 							<option value="">Seleccionar caja</option>
 							<?php foreach ($cajas as $caja) { ?>
 								<option value="<?php echo $caja->id; ?>" <?php if ($caja->id == $dato->id_caja) {
@@ -68,34 +68,12 @@
 			<?php } else if ($funcion == 0) { ?>
 				<a href="<?php echo base_url() ?>index.php/usuarios/perfil/<?php echo $dato->id; ?>" class="btn btn-primary">Volver</a>
 			<?php } ?>
-			<button class="btn btn-success" type="button" id="guardar">Guardar</button>
+			<button class="btn btn-success" type="submit" id="guardar">Guardar</button>
 		</form>
 	</div>
 </div>
 
 <script type="text/javascript">
-	$("#guardar").click(function(e) {
-		if (validador()) {
-			console.log("hola");
-			notify(1, "Editar", "Usuario se a editado con exito", 'R', "success");
-			setTimeout(messeg(), 4000);
-		} else {
-			notify(1, "Editar", "Error al editar el Usuario", 'R', "error");
-		}
-	});
-
-	function validador() {
-		var valida = false;
-		if (($("#usuario").val() != "") && ($("#nombre").val() != "") && ($("#password").val() != "") && ($("#repassword").val() != "") && ($("#id_rol").val() != "") && ($("#id_caja").val() != "")) {
-			valida = true;
-		}
-		return valida;
-	}
-
-	function messeg() {
-		$("#form_usuarios").submit();
-	}
-
 	$(document).on("keypress", 'form', function(e) {
 		var code = e.keyCode || e.which;
 		console.log(code);

@@ -38,7 +38,7 @@
 <script type="text/javascript">
 	$("#guardar").click(function(e) {
 		if (validador()) {
-			notify(1, "Realizar", "Rporte genero con exito", 'R', "success");
+			notify(1, "Realizar", "Reporte se generó con exito", 'R', "success");
 			setTimeout(messeg(), 4000);
 		} else {
 			notify(1, "Realizar", "Error al generar el reporte", 'R', "error");

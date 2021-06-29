@@ -3,11 +3,11 @@
 
 		<h4><?php echo $title; ?></h4>
 
-		<?php if (validation_errors()) : ?>
+		<!-- < if (validation_errors()) : ?>
 			<div class="alert alert-danger col-md-12" role="alert">
-				<?php echo validation_errors();  ?>
+				< echo validation_errors();  ?>
 			</div>
-		<?php endif; ?>
+		< endif; ?> -->
 
 		<form id="form_cajas" method="post" action="<?php echo base_url() ?>index.php/cajas/actualizar" autocomplete="off">
 
@@ -17,12 +17,12 @@
 				<div class="row">
 					<div class="col-6">
 						<label for="no_caja"><span class="text-danger">*</span>N&uacute;mero de caja</label>
-						<input class="form-control" id="no_caja" type="text" name="no_caja" placeholder="Escribe aquí el n&uacute;mero" value="<?php echo $dato->no_caja; ?>" autofocus required>
+						<input class="form-control" id="no_caja" type="text" name="no_caja" placeholder="Escribe aquí el n&uacute;mero" value="<?php echo $dato->no_caja; ?>" autofocus>
 					</div>
 
 					<div class="col-6">
 						<label for="nombre"><span class="text-danger">*</span>Nombre</label>
-						<input class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato->nombre; ?>" required>
+						<input onkeypress="limit(this.value,'nombre',200)" class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato->nombre; ?>">
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 				<div class="row">
 					<div class="col-6">
 						<label for="remision"><span class="text-danger">*</span>Remisi&oacute;n</label>
-						<input class="form-control" id="remision" type="number" step="1" min="0" name="remision" placeholder="Escribe aquí la remisi&oacute;n" value="<?php echo $dato->remision; ?>" required>
+						<input onkeypress="limit(this.value,'remision',10)" class="form-control" id="remision" type="number" step="1" min="0" name="remision" placeholder="Escribe aquí la remisi&oacute;n" value="<?php echo $dato->remision; ?>">
 					</div>
 				</div>
 			</div>
@@ -45,34 +45,12 @@
 			</div>
 
 			<a href="<?php echo base_url() ?>index.php/cajas" class="btn btn-primary">Volver</a>
-			<button class="btn btn-success" type="button" id="guardar">Guardar</button>
+			<button class="btn btn-success" type="submit" id="guardar">Guardar</button>
 		</form>
 	</div>
 </div>
 
 <script type="text/javascript">
-	$("#guardar").click(function(e) {
-		if (validador()) {
-			console.log("hola");
-			notify(1, "Editar", "La caja se a editadó con exito", 'R', "success");
-			setTimeout(messeg(), 4000);
-		} else {
-			notify(1, "Editar", "Error al editar la caja", 'R', "error");
-		}
-	});
-
-	function validador() {
-		var valida = false;
-		if (($("#no_caja").val() != "") && ($("#nombre").val() != "") && ($("#remision").val() != "")) {
-			valida = true;
-		}
-		return valida;
-	}
-
-	function messeg() {
-		$("#form_cajas").submit();
-	}
-
 	$(document).on("keypress", 'form', function(e) {
 		var code = e.keyCode || e.which;
 		console.log(code);

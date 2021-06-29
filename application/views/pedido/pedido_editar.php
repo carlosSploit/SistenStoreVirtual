@@ -11,13 +11,13 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-4">
-                            <label for="codigo"><span class="text-danger">*</span>C&oacute;digo</label>
-                            <input class="form-control" id="codigo" type="text" name="codigo" placeholder="Escribe aquí el código del producto" value="<?php echo $dato['folio']; ?>" readonly>
+                            <label for="codigo"><span class="text-danger"></span>C&oacute;digo</label>
+                            <input class="form-control" id="codigo" type="text" name="codigo" placeholder="Escribe aquí el código del producto" value="<?php echo $dato['folio']; ?>" disabled>
                         </div>
 
                         <div class="col-8">
-                            <label for="nombre"><span class="text-danger">*</span>Nombre</label>
-                            <input class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato['nombre']; ?>" readonly>
+                            <label for="nombre"><span class="text-danger"></span>Nombre</label>
+                            <input class="form-control" id="nombre" type="text" name="nombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato['nombre']; ?>" disabled>
                         </div>
                     </div>
                 </div>
@@ -26,16 +26,16 @@
                     <div class="row">
                         <div class="col">
                             <label for="precio_venta"><span class="text-danger">*</span>Direccion</label>
-                            <input class="form-control col-auto" id="direccion" type="text" name="direccion" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['direccion']; ?>" required>
+                            <input onkeypress="limit(this.value,'direccion',200)" class="form-control col-auto" id="direccion" type="text" name="direccion" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['direccion']; ?>">
                         </div>
                         <div class="w-100 d-block m-2"></div>
                         <div class="col">
                             <label for="precio_venta"><span class="text-danger">*</span>Telefono</label>
-                            <input class="form-control" id="telefono" type="text" name="telefono" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['telefono']; ?>" required>
+                            <input onkeypress="limit(this.value,'telefono',9)" maxlength="9" type="number" class="form-control" id="telefono" type="text" name="telefono" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['telefono']; ?>">
                         </div>
                         <div class="col">
                             <label for="precio_venta"><span class="text-danger">*</span>Fecha</label>
-                            <input class="form-control" id="datep" type="date" name="datep" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['date']; ?>" required>
+                            <input class="form-control" id="datep" type="date" name="datep" placeholder="Escribe aquí el precio de venta" value="<?php echo $dato['date']; ?>">
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
 
                 <a href="<?php echo base_url() ?>index.php/pedido" class="btn btn-primary">Volver</a>
-                <button id="butacped" class="btn btn-success" type="button">Guardar</button>
+                <button id="butacped" class="btn btn-success" type="submit">Guardar</button>
             </form>
         </div>
     </div>
@@ -68,26 +68,4 @@
 
     //     });
     // });
-
-    $("#butacped").click(function(e) {
-        if (validador()) {
-            notify(1, "Editar", "El pedido se a editado con exito", 'R', "success");
-            setTimeout(messeg(), 4000);
-        } else {
-            notify(1, "Editar", "Error al editar el pedido", 'R', "error");
-        }
-    });
-
-    /* Validacion de agregar */
-    function validador() {
-        var valida = false;
-        if (($("#direccion").val() != "") && ($("#telefono").val() != "") && ($("#datep").val() != "")) {
-            valida = true;
-        }
-        return valida;
-    }
-
-    function messeg() {
-        $("#metodo_act").submit();
-    }
 </script>

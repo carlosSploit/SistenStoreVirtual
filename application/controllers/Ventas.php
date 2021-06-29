@@ -11,7 +11,7 @@ class ventas extends CI_Controller
 	}
 
 	//Cargar catalogo
-	public function index()
+	public function index($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -20,11 +20,14 @@ class ventas extends CI_Controller
 		$datos["datos"] = $this->ventasModel->obtener(1);
 		$this->load->view("encabezado");
 		$this->load->view("ventas/ventas", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Cargar catalogo eliminados
-	public function eliminadas()
+	public function eliminadas($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -33,7 +36,10 @@ class ventas extends CI_Controller
 		$datos["datos"] = $this->ventasModel->obtener(0);
 		$this->load->view("encabezado");
 		$this->load->view("ventas/ventas_eliminadas", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Valida e inserta venta
@@ -96,7 +102,7 @@ class ventas extends CI_Controller
 	}
 
 	//Cargar ventas por caja
-	public function ventas_caja()
+	public function ventas_caja($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -104,7 +110,10 @@ class ventas extends CI_Controller
 		$datos["titulo"] = "Ventas del día";
 		$this->load->view("encabezado");
 		$this->load->view("ventas/ventas_caja", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	function mostrarVentas()

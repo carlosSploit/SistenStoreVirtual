@@ -23,19 +23,19 @@ $idCompraTmp = uniqid();
 
 					<div class="col-12 col-sm-4">
 						<label>Cantidad:</label>
-						<input class="form-control" id="cantidad" type="number" min="0" name="cantidad" onkeypress="return filterFloat(event,this);" placeholder="Escribe aquí el precio de compra">
+						<input onkeypress="limit(this.value,'cantidad',5)" class="form-control" id="cantidad" type="number" min="0" name="cantidad" onkeypress="return filterFloat(event,this);" placeholder="Escribe aquí el precio de compra">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-12 col-sm-4">
 						<label>Precio de compra:</label>
-						<input class="form-control" id="precio_compra" name="precio_compra" type="text" readonly>
+						<input class="form-control" id="precio_compra" name="precio_compra" type="number" readonly>
 					</div>
 
 					<div class="col-12 col-sm-4">
 						<label>Subtotal:</label>
-						<input class="form-control" id="subtotal_producto" name="subtotal_producto" type="text" readonly>
+						<input class="form-control" id="subtotal_producto" name="subtotal_producto" type="number" readonly>
 					</div>
 
 					<div class="col-12 col-sm-4">

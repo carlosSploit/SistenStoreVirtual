@@ -11,18 +11,21 @@ class pedido extends CI_Controller
     }
 
     //Carga caja
-    public function index()
+    public function index($id1 = 0, $mess = "mensegprueba", $estade = "")
     {
         if ($this->session->userdata('login') != 1) {
             redirect('login');
         }
         $this->load->view("encabezado");
         $this->load->view("pedido/pedido", ["titulo" => "Pedidos"]);
-        $this->load->view("pie");
+        $data['id'] = $id1;
+        $data['mesg'] = $mess;
+        $data['estade'] = $estade;
+        $this->load->view("pie", $data);
     }
 
     //Cargar catalogo eliminados
-    public function eliminadas()
+    public function eliminadas($id1 = 0, $mess = "mensegprueba", $estade = "")
     {
         if ($this->session->userdata('login') != 1) {
             redirect('login');
@@ -30,11 +33,14 @@ class pedido extends CI_Controller
         $datos["titulo"] = "Pedidos Eliminados";
         $this->load->view("encabezado");
         $this->load->view("pedido/pedidos_eliminados", $datos);
-        $this->load->view("pie");
+        $data['id'] = $id1;
+        $data['mesg'] = $mess;
+        $data['estade'] = $estade;
+        $this->load->view("pie", $data);
     }
 
     //Cargar vista editar
-    public function editar($id)
+    public function editar($id, $id1 = 0, $mess = "mensegprueba", $estade = "")
     {
         if ($this->session->userdata('login') != 1) {
             redirect('login');
@@ -64,17 +70,29 @@ class pedido extends CI_Controller
         $data['dato'] = $dataA;
         $this->load->view("encabezado");
         $this->load->view("pedido/pedido_editar", $data);
-        $this->load->view("pie");
+        $data['id'] = $id1;
+        $data['mesg'] = $mess;
+        $data['estade'] = $estade;
+        $this->load->view("pie", $data);
     }
 
     public function Actualizar()
     {
-        $id = $this->input->post("id");
-        $direccion = $this->input->post("direccion");
-        $telefono = $this->input->post("telefono");
-        $datep = $this->input->post("datep");
-        $resultado = $this->pedidoModel->Actualizar($id, $direccion, $telefono, $datep);
-        redirect("pedido/");
+        if (isset($_POST["id"])) {
+            $id = $this->input->post("id");
+            $direccion = $this->input->post("direccion");
+            $telefono = $this->input->post("telefono");
+            $datep = $this->input->post("datep");
+
+            if (($direccion != "") && ($telefono != "") && ($datep != "")) {
+                $resultado = $this->pedidoModel->Actualizar($id, $direccion, $telefono, $datep);
+                $this->index(1, "El pedido se a acutalizado con exito", "success");
+            } else {
+                $this->editar($id, 1, "Error al editar el pedido", "error");
+            }
+        } else {
+            redirect("/pedido");
+        }
     }
 
     public function ActualizarEstado($id, $val, $idv)
@@ -92,7 +110,7 @@ class pedido extends CI_Controller
     {
         $resultado = $this->ventasModel->eliminar($idv);
         $resultado2 = $this->pedidoModel->EliminarPedido($id, $val);
-        redirect("pedido/");
+        $this->index(1, "La insercion se a dado con exito", "success");
     }
 
     function mostrarPedido()

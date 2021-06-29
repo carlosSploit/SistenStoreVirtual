@@ -19,7 +19,7 @@ class login extends CI_controller
 	}
 
 	//Verifica si usuario y password es correcto
-	public function verifica()
+	public function verifica($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		$usuario = $this->input->post('usuario');
 		$password = $this->input->post('password');
@@ -39,7 +39,10 @@ class login extends CI_controller
 		} else {
 
 			$this->load->view('login');
-			$this->load->view('pie');
+			$data['id'] = $id;
+			$data['mesg'] = $mess;
+			$data['estade'] = $estade;
+			$this->load->view("pie", $data);
 		}
 	}
 

@@ -21,7 +21,7 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 					<div class="row">
 						<div class="col-12 col-sm-6">
 							<label for="tienda_nombre"><span class="text-danger">*</span>Nombre de la tienda:</label>
-							<input class="form-control form-control-sm" id="tienda_nombre" type="text" name="tienda_nombre" value="<?php echo htmlspecialchars($this->db->get_where('configuracion', array('nombre' => 'tienda_nombre'))->row()->valor); ?>" autofocus required>
+							<input onkeypress="limit(this.value,'nombre',50)" class="form-control form-control-sm" id="tienda_nombre" type="text" name="tienda_nombre" value="<?php echo htmlspecialchars($this->db->get_where('configuracion', array('nombre' => 'tienda_nombre'))->row()->valor); ?>" autofocus required>
 						</div>
 
 						<div class="col-12 col-sm-6">
@@ -35,7 +35,7 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 					<div class="row">
 						<div class="col-12 col-sm-6">
 							<label for="tienda_telefono"><span class="text-danger">*</span>Teléfono:</label>
-							<input class="form-control form-control-sm" id="tienda_telefono" type="text" name="tienda_telefono" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_telefono'))->row()->valor; ?>" required>
+							<input onkeypress="limit(this.value,'tienda_telefono',9)" class="form-control form-control-sm" id="tienda_telefono" type="number" name="tienda_telefono" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_telefono'))->row()->valor; ?>" required>
 						</div>
 
 						<div class="col-12 col-sm-6">

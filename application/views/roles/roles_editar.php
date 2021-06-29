@@ -3,11 +3,11 @@
 
 		<h4><?php echo $title; ?></h4>
 
-		<?php if (validation_errors()) : ?>
+		<!-- < if (validation_errors()) : ?>
 			<div class="alert alert-danger col-md-12" role="alert">
-				<?php echo validation_errors();  ?>
+				< echo validation_errors();  ?>
 			</div>
-		<?php endif; ?>
+		< endif; ?> -->
 
 		<form id="form_roles" method="post" action="<?php echo base_url() ?>index.php/roles/actualizar" autocomplete="off">
 
@@ -17,7 +17,7 @@
 			<div id="divNombre" class="form-group">
 				<label for="nombre"><span class="text-danger">*</span>Nombre</label>
 				<div class="control">
-					<input class="form-control" id="nombre" type="text" name="nombre" aria-describedby="helpNombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato->nombre; ?>" autofocus required>
+					<input onkeypress="limit(this.value,'nombre',50)" class="form-control" id="nombre" type="text" name="nombre" aria-describedby="helpNombre" placeholder="Escribe aquí el nombre" value="<?php echo $dato->nombre; ?>" autofocus>
 					<span class="help-block"></span>
 				</div>
 			</div>
@@ -31,21 +31,21 @@
 			</div>
 
 			<a href="<?php echo base_url() ?>index.php/roles" class="btn btn-primary">Volver</a>
-			<button class="btn btn-success" type="button" id="guardar">Guardar</button>
+			<button class="btn btn-success" type="submit" id="guardar">Guardar</button>
 		</form>
 	</div>
 </div>
 
 <script type="text/javascript">
-	$("#guardar").click(function(e) {
-		if (validador()) {
-			console.log("hola");
-			notify(1, "Editar", "Producto se a editado con exito", 'R', "success");
-			setTimeout(messeg(), 4000);
-		} else {
-			notify(1, "Editar", "Error al editar el Producto", 'R', "error");
-		}
-	});
+	// $("#guardar").click(function(e) {
+	// 	if (validador()) {
+	// 		console.log("hola");
+	// 		notify(1, "Editar", "Producto se a editado con exito", 'R', "success");
+	// 		setTimeout(messeg(), 4000);
+	// 	} else {
+	// 		notify(1, "Editar", "Error al editar el Producto", 'R', "error");
+	// 	}
+	// });
 
 	function validador() {
 		var valida = false;

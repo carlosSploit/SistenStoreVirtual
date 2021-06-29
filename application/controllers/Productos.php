@@ -11,7 +11,7 @@ class productos extends CI_Controller
 	}
 
 	//Cargar catalogo
-	public function index()
+	public function index($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -20,11 +20,14 @@ class productos extends CI_Controller
 		$datos["datos"] = $this->productosModel->obtener(1);
 		$this->load->view("encabezado");
 		$this->load->view("productos/productos", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Cargar catalogo eliminados
-	public function eliminados()
+	public function eliminados($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -33,11 +36,14 @@ class productos extends CI_Controller
 		$datos["datos"] = $this->productosModel->obtener(0);
 		$this->load->view("encabezado");
 		$this->load->view("productos/productos_eliminados", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Cargar catalogo sin existencia
-	public function sinExistencia($existencia)
+	public function sinExistencia($existencia, $id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -46,11 +52,14 @@ class productos extends CI_Controller
 		$datos["datos"] = $this->productosModel->porExistencia($existencia);
 		$this->load->view("encabezado");
 		$this->load->view("productos/sin_existencia", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Cargar catalogo stock minimo
-	public function stockMinimo()
+	public function stockMinimo($id = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -60,11 +69,14 @@ class productos extends CI_Controller
 		//print_r($this->db->last_query()); 
 		$this->load->view("encabezado");
 		$this->load->view("productos/stock_minimo", $datos);
-		$this->load->view("pie");
+		$data['id'] = $id;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Cargar vista nuevo
-	public function agregar()
+	public function agregar($id1 = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -78,7 +90,10 @@ class productos extends CI_Controller
 		$data['title'] = 'Agregar producto';
 		$this->load->view("encabezado");
 		$this->load->view("productos/productos_agregar", $data);
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Inserta y valida formulario nuevo 
@@ -106,17 +121,17 @@ class productos extends CI_Controller
 		if ($this->form_validation->run() == TRUE) {
 			$resultado = $this->productosModel->insertar($codigo, $nombre, $id_unidad, $id_categoria, $precio_venta, $precio_compra, $stock_minimo, $inventariable, 1);
 			if ($resultado) {
-				redirect("productos/");
+				$this->index(1, "Producto se agregadó con exito", "success");
 			} else {
-				$this->agregar();
+				$this->agregar(1, "Error al agregar el producto", "error");
 			}
 		} else {
-			$this->agregar();
+			$this->agregar(1, "Error al agregar el producto", "error");
 		}
 	}
 
 	//Cargar vista editar
-	public function editar($id)
+	public function editar($id, $id1 = 0, $mess = "mensegprueba", $estade = "")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
@@ -132,49 +147,58 @@ class productos extends CI_Controller
 		$data['dato'] = $datoParaEditar;
 		$this->load->view("encabezado");
 		$this->load->view("productos/productos_editar", $data);
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 
 	//Actualiza y valida formulario editar 
-	public function actualizar()
+	public function actualizar($redice = 0)
 	{
-		$id = $this->input->post("id");
-		$codigo = $this->input->post("codigo");
-		$codigo_org = $this->input->post("codigo_org");
-		$nombre = $this->input->post("nombre");
-		$id_unidad = $this->input->post("id_unidad");
-		$id_categoria = $this->input->post("id_categoria");
-		$precio_venta = preg_replace('([^0-9\.])', '', $this->input->post("precio_venta"));
-		$precio_compra = preg_replace('([^0-9\.])', '', $this->input->post("precio_compra"));
-		$stock_minimo = preg_replace('([^0-9])', '', $this->input->post("stock_minimo"));
-		$inventariable = $this->input->post("inventariable");
+		if (isset($_POST["id"])) {
 
-		if ($codigo != $codigo_org) {
-			$is_unique =  '|is_unique[productos.codigo]';
-		} else {
-			$is_unique =  '';
-		}
+			$id = $this->input->post("id");
+			$codigo = $this->input->post("codigo");
+			$codigo_org = $this->input->post("codigo_org");
+			$nombre = $this->input->post("nombre");
+			$id_unidad = $this->input->post("id_unidad");
+			$id_categoria = $this->input->post("id_categoria");
+			$precio_venta = preg_replace('([^0-9\.])', '', $this->input->post("precio_venta"));
+			$precio_compra = preg_replace('([^0-9\.])', '', $this->input->post("precio_compra"));
+			$stock_minimo = preg_replace('([^0-9])', '', $this->input->post("stock_minimo"));
+			$inventariable = $this->input->post("inventariable");
 
-		$this->form_validation->set_rules('codigo', 'Código', 'required');
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required');
-		$this->form_validation->set_rules('id_unidad', 'Unidad', 'required');
-		$this->form_validation->set_rules('id_categoria', 'Categoria', 'required');
-		$this->form_validation->set_rules('precio_venta', 'Precio de venta', 'required|numeric');
-		$this->form_validation->set_rules('stock_minimo', 'Stock m&iacute;nimo', 'numeric');
-		$this->form_validation->set_message('required', 'El campo {field} es obligatorio.');
-		$this->form_validation->set_message('numeric', 'El campo {field} debe contener solo números.');
-		$this->form_validation->set_message('is_unique', 'El campo {field} debe contener un valor único.');
-
-		if ($this->form_validation->run() == TRUE) {
-			$resultado = $this->productosModel->guardarCambios($id, $codigo, $nombre, $id_unidad, $id_categoria, $precio_venta, $precio_compra, $stock_minimo, $inventariable, 1);
-
-			if ($resultado) {
-				redirect("productos/");
+			if ($codigo != $codigo_org) {
+				$is_unique =  '|is_unique[productos.codigo]';
 			} else {
-				$this->editar($id);
+				$is_unique =  '';
+			}
+
+			$this->form_validation->set_rules('codigo', 'Código', 'required');
+			$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+			$this->form_validation->set_rules('id_unidad', 'Unidad', 'required');
+			$this->form_validation->set_rules('id_categoria', 'Categoria', 'required');
+			$this->form_validation->set_rules('precio_venta', 'Precio de venta', 'required|numeric');
+			$this->form_validation->set_rules('stock_minimo', 'Stock m&iacute;nimo', 'numeric');
+			$this->form_validation->set_message('required', 'El campo {field} es obligatorio.');
+			$this->form_validation->set_message('numeric', 'El campo {field} debe contener solo números.');
+			$this->form_validation->set_message('is_unique', 'El campo {field} debe contener un valor único.');
+
+			if ($this->form_validation->run() == TRUE) {
+				$resultado = $this->productosModel->guardarCambios($id, $codigo, $nombre, $id_unidad, $id_categoria, $precio_venta, $precio_compra, $stock_minimo, $inventariable, 1);
+
+				if ($resultado) {
+					$this->index(1, "Producto se a editado con exito", "success");
+				} else {
+					$this->editar($id, 1, "Error al editar un producto", "error");
+				}
+			} else {
+				$this->editar($id, 1, "Error al editar un producto", "error");
 			}
 		} else {
-			$this->editar($id);
+			echo '<script type = "text/javascript" > alert("Evitar recargar este link"); </script>';
+			redirect("productos/");
 		}
 	}
 
@@ -182,7 +206,7 @@ class productos extends CI_Controller
 	public function eliminar($id)
 	{
 		$resultado = $this->productosModel->eliminar($id);
-		redirect("productos/");
+		$this->index(1, "El producto se elimino con exito", "success");
 	}
 
 	//Reingresa producto

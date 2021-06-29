@@ -54,7 +54,7 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 										<div class="input-group-prepend">
 											<div class="input-group-text"><span class="fas fa-sort-amount-up-alt"></span></div>
 										</div>
-										<input class="form-control" id="cantiprod" type="text" placeholder="stock">
+										<input onkeypress="limit(this.value,'cantiprod',5)" type="number" class="form-control" id="cantiprod" type="text" placeholder="stock">
 									</div>
 								</div>
 							</div>
@@ -74,21 +74,21 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 										<div class="input-group-prepend">
 											<div class="input-group-text"><span class="fas fa-street-view"></span></div>
 										</div>
-										<input class="form-control" id="direc" name="direc" type="text" placeholder="Direccion">
+										<input onkeypress="limit(this.value,'direc',200)" class="form-control" id="direc" name="direc" type="text" placeholder="Direccion">
 									</div>
 									<div class="w-100 d-block m-2"></div>
 									<div class="input-group col">
 										<div class="input-group-prepend">
 											<div class="input-group-text"><span class="fas fa-mobile-alt"></span></div>
 										</div>
-										<input class="form-control" name="telf" id="telf" type="text" placeholder="Telefono">
+										<input onkeypress="limit(this.value,'telf',9)" type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" class="form-control" name="telf" id="telf" type="text" placeholder="Telefono (000-000-000)">
 									</div>
 									<div class="w-100 d-block d-lg-none m-2"></div>
 									<div class="input-group col">
 										<div class="input-group-prepend">
 											<div class="input-group-text"><span class="fas fa-calendar-alt"></span></div>
 										</div>
-										<input class="form-control" name="date" id="date" type="date" placeholder="Telefono">
+										<input class="form-control" name="date" id="date" type="date" placeholder="00-00-0000">
 									</div>
 								</div>
 								<br>

@@ -15,13 +15,13 @@
 				<div class="row">
 					<div id="divNombre" class="col-12 col-sm-6">
 						<label for="nombre"><span class="text-danger">*</span> Nombre</label>
-						<input class="form-control" id="nombre" type="text" name="nombre" aria-describedby="helpNombre" onBlur="validaNombre(this.value, this, '.help-block');" placeholder="Escribe aquí el nombre" autofocus required>
+						<input onkeypress="limit(this.value,'nombre',50)" class="form-control" id="nombre" type="text" name="nombre" aria-describedby="helpNombre" onBlur="validaNombre(this.value, this, '.help-block');" placeholder="Escribe aquí el nombre" autofocus>
 						<span class="help-block"></span>
 					</div>
 
 					<div class="col-12 col-sm-6">
 						<label for="nombre_corto"><span class="text-danger">*</span> Nombre corto</label>
-						<input class="form-control" id="nombre_corto" type="text" name="nombre_corto" placeholder="Escribe aquí el nombre corto" required>
+						<input onkeypress="limit(this.value,'nombre_corto',20)" class="form-control" id="nombre_corto" type="text" name="nombre_corto" placeholder="Escribe aquí el nombre corto">
 					</div>
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 			</div>
 
 			<a href="<?php echo base_url() ?>index.php/unidades" class="btn btn-primary">Volver</a>
-			<button class="btn btn-success" type="button" id="guardar">Guardar</button>
+			<button class="btn btn-success" type="submit" id="guardar">Guardar</button>
 		</form>
 	</div>
 </div>
@@ -51,26 +51,6 @@
 		}
 	});
 
-	$("#guardar").click(function(e) {
-		if (validador()) {
-			notify(1, "Agregar", "La unidad se agregadó con exito", 'R', "success");
-			setTimeout(messeg(), 4000);
-		} else {
-			notify(1, "Agregar", "Error al agregar La unidad", 'R', "error");
-		}
-	});
-
-	function validador() {
-		var valida = false;
-		if (($("#nombre").val() != "") && ($("#nombre_corto").val() != "")) {
-			valida = true;
-		}
-		return valida;
-	}
-
-	function messeg() {
-		//$("#form_unida").submit();
-	}
 
 	function validaNombre(nombre, tagNombre, tagSpan) {
 

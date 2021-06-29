@@ -11,13 +11,16 @@ class Welcome extends CI_Controller
 	}
 
 	//Carga vista inicio de sesion
-	public function index()
+	public function index($id1 = 0, $mess = "Los graficos se realizaron con exito", $estade = "success")
 	{
 		if ($this->session->userdata('login') != 1) {
 			redirect('login');
 		}
 		$this->load->view("encabezado");
 		$this->load->view('welcome');
-		$this->load->view("pie");
+		$data['id'] = $id1;
+		$data['mesg'] = $mess;
+		$data['estade'] = $estade;
+		$this->load->view("pie", $data);
 	}
 }

@@ -9,14 +9,17 @@ class Analitic extends CI_Controller
     }
 
     //Carga Analitic
-    public function index()
+    public function index($id1 = 1, $mess = "Los graficos se realizaron con exito", $estade = "success")
     {
         if ($this->session->userdata('login') != 1) {
             redirect('login');
         }
         $this->load->view("encabezado");
         $this->load->view("Analitic/Analitic");
-        $this->load->view("pie");
+        $data['id'] = $id1;
+        $data['mesg'] = $mess;
+        $data['estade'] = $estade;
+        $this->load->view("pie", $data);
     }
     //metodo de api de analitic
     public function Analitic($anction)
