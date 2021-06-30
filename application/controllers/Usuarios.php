@@ -165,8 +165,13 @@ class usuarios extends CI_Controller
 	//Elimina producto
 	public function eliminar($id)
 	{
-		$resultado = $this->usuariosModel->eliminar($id);
-		$this->index(1, "Eliminado Usuario se a eliminado con exito", "success");
+		$resultado = $this->usuariosModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->usuariosModel->eliminar($id);
+			$this->index(1, "Eliminado Usuario se a eliminado con exito", "success");
+		} else {
+			redirect("/usuarios");
+		}
 	}
 
 	//Reingresa producto

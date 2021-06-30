@@ -139,8 +139,13 @@ class cajas extends CI_Controller
 	//Elimina caja
 	public function eliminar($id)
 	{
-		$resultado = $this->cajasModel->eliminar($id);
-		$this->index(1, "La caja se elimino con exito", "success");
+		$resultado = $this->rolesModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->cajasModel->eliminar($id);
+			$this->index(1, "La caja se elimino con exito", "success");
+		} else {
+			redirect("/cajas");
+		}
 	}
 
 	//Reingresa caja

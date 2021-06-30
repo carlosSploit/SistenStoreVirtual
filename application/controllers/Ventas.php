@@ -97,8 +97,13 @@ class ventas extends CI_Controller
 	//Cancela venta
 	public function eliminar($id)
 	{
-		$resultado = $this->ventasModel->eliminar($id);
-		redirect("ventas/");
+		$resultado = $this->ventasModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->ventasModel->eliminar($id);
+			$this->index(1, "La venta se a eliminado con exito", "success");
+		} else {
+			redirect("ventas/");
+		}
 	}
 
 	//Cargar ventas por caja

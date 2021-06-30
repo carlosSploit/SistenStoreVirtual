@@ -53,6 +53,21 @@ class pedidoModel extends CI_Model
         return $this->db->update("pedido", $datos, ["id_pedido" => $id]);
     }
 
+    function getRowsidState($id = 0)
+    {
+        $this->db->select("estado");
+        $this->db->from("pedido");
+        $this->db->where(["id_pedido" => $id]);
+        $prodcutos = $this->db->get();
+        $state = 0;
+
+        foreach ($prodcutos->result() as $rows) {
+            $state = (($rows->estado) > 2) ? 0 : 1;
+        }
+
+        return $state;
+    }
+
     //Elimina producto de tabla temporal por id_producto e id_venta
     // public function eliminar($id_producto, $id_venta)
     // {

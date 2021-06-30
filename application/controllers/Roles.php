@@ -133,8 +133,13 @@ class roles extends CI_Controller
 	//Elimina producto
 	public function eliminar($id)
 	{
-		$resultado = $this->rolesModel->eliminar($id);
-		$this->index(1, "El rol se elimino con exito", "success");
+		$resultado = $this->rolesModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->rolesModel->eliminar($id);
+			$this->index(1, "El rol se elimino con exito", "success");
+		} else {
+			redirect("unidades/");
+		}
 	}
 
 	//Reingresa producto

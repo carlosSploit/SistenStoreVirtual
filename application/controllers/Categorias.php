@@ -123,8 +123,13 @@ class categorias extends CI_Controller
 	//Elimina producto
 	public function eliminar($id)
 	{
-		$resultado = $this->categoriasModel->eliminar($id);
-		$this->index(1, "La categoria se a eliminado con exito", "success");
+		$resultado = $this->categoriasModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->categoriasModel->eliminar($id);
+			$this->index(1, "La categoria se a eliminado con exito", "success");
+		} else {
+			redirect("categorias/");
+		}
 	}
 
 	//Reingresa producto

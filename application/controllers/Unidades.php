@@ -126,8 +126,13 @@ class unidades extends CI_Controller
 	//Elimina producto
 	public function eliminar($id)
 	{
-		$resultado = $this->unidadesModel->eliminar($id);
-		$this->index(1, "La unidad se a editado con exito", "success");
+		$resultado = $this->unidadesModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->unidadesModel->eliminar($id);
+			$this->index(1, "La unidad se a editado con exito", "success");
+		} else {
+			redirect("unidades/");
+		}
 	}
 
 	//Reingresa producto

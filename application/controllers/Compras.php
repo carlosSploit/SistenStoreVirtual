@@ -59,8 +59,13 @@ class compras extends CI_Controller
 	//Cancela compra
 	public function eliminar($id)
 	{
-		$resultado = $this->almacenModel->eliminar($id);
-		$this->index(1, "La compra se elimino con exito", "success");
+		$resultado = $this->almacenModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->almacenModel->eliminar($id);
+			$this->index(1, "La compra se elimino con exito", "success");
+		} else {
+			redirect("compras/");
+		}
 	}
 
 	//Busca producto por codigo

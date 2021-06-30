@@ -108,9 +108,14 @@ class pedido extends CI_Controller
 
     public function EliminarPedido($id, $val, $idv)
     {
-        $resultado = $this->ventasModel->eliminar($idv);
-        $resultado2 = $this->pedidoModel->EliminarPedido($id, $val);
-        $this->index(1, "La insercion se a dado con exito", "success");
+        $resultado = $this->pedidoModel->getRowsidState($id);
+        if ($resultado == 1) {
+            $resultado = $this->ventasModel->eliminar($idv);
+            $resultado2 = $this->pedidoModel->EliminarPedido($id, $val);
+            $this->index(1, "El pedido se a eliminado con exito", "success");
+        } else {
+            redirect("pedido/");
+        }
     }
 
     function mostrarPedido()

@@ -205,8 +205,14 @@ class productos extends CI_Controller
 	//Elimina producto
 	public function eliminar($id)
 	{
-		$resultado = $this->productosModel->eliminar($id);
-		$this->index(1, "El producto se elimino con exito", "success");
+		echo $id;
+		$resultado = $this->productosModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->productosModel->eliminar($id);
+			$this->index(1, "El producto se elimino con exito", "success");
+		} else {
+			redirect("productos/");
+		}
 	}
 
 	//Reingresa producto

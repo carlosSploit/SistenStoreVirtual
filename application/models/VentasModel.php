@@ -86,4 +86,18 @@ class ventasModel extends CI_Model
 		$this->db->where('id', '1');
 		$this->db->update('folio');
 	}
+
+	function getRowsidState($id = 0)
+	{
+		$this->db->select("activo");
+		$this->db->from("ventas");
+		$this->db->where(["id" => $id]);
+		$prodcutos = $this->db->get();
+		$state = 0;
+
+		foreach ($prodcutos->result() as $rows) {
+			$state = $rows->activo;
+		}
+		return $state;
+	}
 }

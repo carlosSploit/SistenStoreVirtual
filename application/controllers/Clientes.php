@@ -128,8 +128,13 @@ class clientes extends CI_Controller
 	//Elimina producto
 	public function eliminar($id)
 	{
-		$resultado = $this->clientesModel->eliminar($id);
-		$this->index(1, "El cliente se a eliminado con exito", "success");
+		$resultado = $this->clientesModel->getRowsidState($id);
+		if ($resultado == 1) {
+			$resultado = $this->clientesModel->eliminar($id);
+			$this->index(1, "El cliente se a eliminado con exito", "success");
+		} else {
+			redirect("categorias/");
+		}
 	}
 
 	//Reingresa producto
