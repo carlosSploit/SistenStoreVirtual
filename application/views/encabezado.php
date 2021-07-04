@@ -28,8 +28,10 @@
 
 <body id="page-top">
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-		<a class="navbar-brand mr-1" href="<?php echo base_url() ?>index.php/welcome"><?php echo $this->db->get_where("configuracion", array('nombre' => 'tienda_nombre'))->row()->valor; ?> </a>
+		<!--<?php echo $this->db->get_where("configuracion", array('nombre' => 'tienda_nombre'))->row()->valor; ?>-->
+		<a class="navbar-brand mr-1" href="<?php echo base_url() ?>index.php/welcome">
+			<!--<img class="d-block d-sm-none d-md-none d-lg-none" width="32" height="32" src="<?php echo base_url() ?>images/ln.png">---> <img width="150" height="30" src="<?php echo base_url() ?>images/logoPron.png">
+		</a>
 
 		<button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>

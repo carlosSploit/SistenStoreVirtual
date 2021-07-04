@@ -243,11 +243,16 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 				notify(1, "Venta", "Error al realizar la venta", 'R', "error");
 				//$('#modalito').modal('show');
 			} else {
-				if (validad()) {
+				if ($('#chekpedido1').prop('checked')) {
+					if (validad()) {
+						notify(1, "Insercion", "El pedido se realizo con exito", 'R', "success");
+						setTimeout(metSub(), 4000);
+					} else {
+						notify(1, "Venta", "Error, unas de las casillas esta vacia, para el pedido", 'R', "error");
+					}
+				} else {
 					notify(1, "Insercion", "La venta se realizo con exito", 'R', "success");
 					setTimeout(metSub(), 4000);
-				} else {
-					notify(1, "Venta", "Error, unas de las casillas esta vacia, para el pedido", 'R', "error");
 				}
 			}
 		});
