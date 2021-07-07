@@ -97,7 +97,7 @@ class usuarios extends CI_Controller
 				$this->agregar(1, "Error al agregar el Usuario", "error");
 			}
 		} else {
-			$this->agregar(1, "Error al agregar el Usuario", "error");
+			$this->agregar(2, (""), "error");
 		}
 	}
 
@@ -155,7 +155,7 @@ class usuarios extends CI_Controller
 					$this->editar($id, 0, 1, "Error al editar el Usuario", "error");
 				}
 			} else {
-				$this->editar($id, 0, 1, "Error al editar el Usuario", "error");
+				$this->editar($id, 0, 2, "Error al editar el Usuario", "error");
 			}
 		} else {
 			redirect("/usuarios");
@@ -244,7 +244,7 @@ class usuarios extends CI_Controller
 					$this->editar_password($id, 1, "error al ingresar la contraseña", "error");
 				}
 			} else {
-				$this->editar_password($id, 1, "error al ingresar la contraseña", "error");
+				$this->editar_password($id, 2, "error al ingresar la contraseña", "error");
 			}
 		} else {
 			redirect("/usuarios");

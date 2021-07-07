@@ -29,7 +29,7 @@
 			<div class="centrado">
 				<p>
 					<a href="<?php echo base_url() ?>index.php/productos/agregar" class="btn btn-info">Agregar</a>
-					<a href="<?php echo base_url() ?>index.php/productos/eliminados" class="btn btn-warning">Eliminados</a>
+					<a href="<?php echo base_url() ?>index.php/productos/eliminados" class="btn btn-warning ">Eliminados</a>
 				</p>
 			</div>
 

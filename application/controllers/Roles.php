@@ -74,7 +74,7 @@ class roles extends CI_Controller
 				$this->agregar(1, "Error al agregar el Rol", "error");
 			}
 		} else {
-			$this->agregar(1, "Error al agregar el Rol", "error");
+			$this->agregar(2, "Error al agregar el Rol", "error");
 		}
 	}
 
@@ -123,7 +123,7 @@ class roles extends CI_Controller
 					$this->editar($id, 1, "Error al editar el Rol", "error");
 				}
 			} else {
-				$this->editar($id, 1, "Error al editar el Rol", "error");
+				$this->editar($id, 2, "Error al editar el Rol", "error");
 			}
 		} else {
 			redirect("/roles");

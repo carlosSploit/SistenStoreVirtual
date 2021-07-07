@@ -27,6 +27,9 @@
 </head>
 
 <body id="page-top">
+	<?php
+	$varid =  $this->session->userdata('id_rol');
+	$vartipe =   $this->db->get_where("roles", array('id' => $varid))->row()->nombre; ?>
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 		<!--<?php echo $this->db->get_where("configuracion", array('nombre' => 'tienda_nombre'))->row()->valor; ?>-->
 		<a class="navbar-brand mr-1" href="<?php echo base_url() ?>index.php/welcome">
@@ -79,8 +82,8 @@
 
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/productos">Productos</a>
-					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/unidades">Unidades</a>
-					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/categorias">Categorias</a>
+					<a class="dropdown-item <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>" href="<?php echo base_url() ?>index.php/unidades">Unidades</a>
+					<a class="dropdown-item <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>" href="<?php echo base_url() ?>index.php/categorias">Categorias</a>
 				</div>
 			</li>
 
@@ -95,7 +98,7 @@
 				</div>
 			</li>
 
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-truck"></i>
 					<span>Compras </span>
@@ -126,14 +129,14 @@
 				</a>
 			</li>
 
-			<li class="nav-item">
+			<li class="nav-item <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
 				<a class="nav-link" href="<?php echo base_url() ?>index.php/Analitic">
 					<i class="fas fa-chart-area"></i>
 					<span>Analiticas</span>
 				</a>
 			</li>
 
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-list-alt"></i>
 					<span>Reportes</span>
@@ -146,13 +149,13 @@
 				</div>
 			</li>
 
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-wrench"></i>
 					<span>Administraci&oacute;n</span>
 				</a>
 
-				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<div class="dropdown-menu " aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/configuracion">Configuraci&oacute;n</a>
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/usuarios">Usuarios</a>
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/roles">Roles</a>

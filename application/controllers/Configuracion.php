@@ -59,7 +59,7 @@ class configuracion extends CI_Controller
 				}
 				$this->index(1, "La configuracion se realiso con exito", "success");
 			} else {
-				$this->index(1, "Error al realizar la configuracion", "error");
+				$this->index(2, "Error al realizar la configuracion", "error");
 			}
 		} else {
 			redirect("/configuracion");

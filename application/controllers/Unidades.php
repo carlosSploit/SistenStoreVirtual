@@ -75,7 +75,7 @@ class unidades extends CI_Controller
 				$this->agregar(1, "Error al agregar La unidad", "error");
 			}
 		} else {
-			$this->agregar(1, "Error al agregar La unidad", "error");
+			$this->agregar(2, "Error al agregar La unidad", "error");
 		}
 	}
 
@@ -116,7 +116,7 @@ class unidades extends CI_Controller
 					$this->editar($id, 1, "Error al editar La unidad", "error");
 				}
 			} else {
-				$this->editar($id, 1, "Error al editar La unidad", "error");
+				$this->editar($id, 2, "Error al editar La unidad", "error");
 			}
 		} else {
 			redirect("/unidades");

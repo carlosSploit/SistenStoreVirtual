@@ -74,7 +74,7 @@ class categorias extends CI_Controller
 				$this->agregar(1, "Error al ingresar la categoria", "error");
 			}
 		} else {
-			$this->agregar(1, "Error al ingresar la categoria", "error");
+			$this->agregar(2, "Error al ingresar la categoria", "error");
 		}
 	}
 
@@ -113,7 +113,7 @@ class categorias extends CI_Controller
 					$this->editar($id, 1, "Error al actualizar la categoria", "error");
 				}
 			} else {
-				$this->editar($id, 1, "Error al actualizar la categoria", "error");
+				$this->editar($id, 2, "Error al actualizar la categoria", "error");
 			}
 		} else {
 			redirect("/categorias");

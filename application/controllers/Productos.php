@@ -126,7 +126,7 @@ class productos extends CI_Controller
 				$this->agregar(1, "Error al agregar el producto", "error");
 			}
 		} else {
-			$this->agregar(1, "Error al agregar el producto", "error");
+			$this->agregar(2, "Error al agregar el producto", "error");
 		}
 	}
 
@@ -194,7 +194,7 @@ class productos extends CI_Controller
 					$this->editar($id, 1, "Error al editar un producto", "error");
 				}
 			} else {
-				$this->editar($id, 1, "Error al editar un producto", "error");
+				$this->editar($id, 2, "Error al editar un producto", "error");
 			}
 		} else {
 			echo '<script type = "text/javascript" > alert("Evitar recargar este link"); </script>';

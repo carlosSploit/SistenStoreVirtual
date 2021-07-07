@@ -76,7 +76,7 @@ class clientes extends CI_Controller
 				$this->agregar(1, "Error al ingresar el cliente", "error");
 			}
 		} else {
-			$this->agregar(1, "Error al ingresar el cliente", "error");
+			$this->agregar(2, "Error al ingresar el cliente", "error");
 		}
 	}
 
@@ -118,7 +118,7 @@ class clientes extends CI_Controller
 					$this->editar($id, 1, "Error al actualizar el cliente", "error");
 				}
 			} else {
-				$this->editar($id, 1, "Error al actualizar el cliente", "error");
+				$this->editar($id, 2, "Error al actualizar el cliente", "error");
 			}
 		} else {
 			redirect("/clientes");

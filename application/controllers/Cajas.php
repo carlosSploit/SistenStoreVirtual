@@ -78,7 +78,7 @@ class cajas extends CI_Controller
 				$this->agregar(1, "Error al editar la caja", "error");
 			}
 		} else {
-			$this->agregar(1, "Error al editar la caja", "error");
+			$this->agregar(2, "Error al editar la caja", "error");
 		}
 	}
 
@@ -129,7 +129,7 @@ class cajas extends CI_Controller
 					$this->editar($id, 1, "Error al actualizo datos", "error");
 				}
 			} else {
-				$this->editar($id, 1, "Error al actualizo datos", "error");
+				$this->editar($id, 2, "Error al actualizo datos", "error");
 			}
 		} else {
 			redirect("/cajas");

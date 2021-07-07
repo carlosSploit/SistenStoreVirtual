@@ -7,12 +7,12 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 		<div class="panel">
 			<h4><?php echo $titulo; ?></h4>
 
-			<?php if (validation_errors()) : ?>
+			<!-- < if (validation_errors()) : ?>
 				<div class="bg-danger col-md-4">
-					<?php echo validation_errors();  ?>
+					< echo validation_errors();  ?>
 				</div>
 				<br>
-			<?php endif; ?>
+			< endif; ?> -->
 
 			<form method="post" action="<?php echo base_url() ?>index.php/configuracion/actualizar" enctype="multipart/form-data" autocomplete="off">
 				<br>
@@ -21,12 +21,12 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 					<div class="row">
 						<div class="col-12 col-sm-6">
 							<label for="tienda_nombre"><span class="text-danger">*</span>Nombre de la tienda:</label>
-							<input onkeypress="limit(this.value,'nombre',50)" class="form-control form-control-sm" id="tienda_nombre" type="text" name="tienda_nombre" value="<?php echo htmlspecialchars($this->db->get_where('configuracion', array('nombre' => 'tienda_nombre'))->row()->valor); ?>" autofocus required>
+							<input onkeypress="limit(this.value,'nombre',50)" class="form-control form-control-sm" id="tienda_nombre" type="text" name="tienda_nombre" value="<?php echo htmlspecialchars($this->db->get_where('configuracion', array('nombre' => 'tienda_nombre'))->row()->valor); ?>" autofocus>
 						</div>
 
 						<div class="col-12 col-sm-6">
 							<label for="tienda_rfc"><span class="text-danger">*</span>RFC</label>
-							<input class="form-control form-control-sm" id="tienda_rfc" type="text" name="tienda_rfc" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_rfc'))->row()->valor; ?>" required>
+							<input class="form-control form-control-sm" id="tienda_rfc" type="text" name="tienda_rfc" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_rfc'))->row()->valor; ?>">
 						</div>
 					</div>
 				</div>
@@ -35,12 +35,12 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 					<div class="row">
 						<div class="col-12 col-sm-6">
 							<label for="tienda_telefono"><span class="text-danger">*</span>Teléfono:</label>
-							<input onkeypress="limit(this.value,'tienda_telefono',9)" class="form-control form-control-sm" id="tienda_telefono" type="number" name="tienda_telefono" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_telefono'))->row()->valor; ?>" required>
+							<input onkeypress="limit(this.value,'tienda_telefono',9)" class="form-control form-control-sm" id="tienda_telefono" type="number" name="tienda_telefono" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_telefono'))->row()->valor; ?>">
 						</div>
 
 						<div class="col-12 col-sm-6">
 							<label for="tienda_correo"><span class="text-danger">*</span>Correo electrónico</label>
-							<input class="form-control form-control-sm" id="tienda_correo" type="text" name="tienda_correo" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_correo'))->row()->valor; ?>" required>
+							<input class="form-control form-control-sm" id="tienda_correo" type="text" name="tienda_correo" value="<?php echo $this->db->get_where('configuracion', array('nombre' => 'tienda_correo'))->row()->valor; ?>">
 						</div>
 					</div>
 				</div>

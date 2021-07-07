@@ -26,7 +26,7 @@
                 if (response == 0) {
                     $(tagCodigo).val('');
                 } else {
-                    console.log("hecho");
+                    notify(1, "Pedido", "El pedido se actualizo con exito", 'R', "success");
                 }
             }
         });

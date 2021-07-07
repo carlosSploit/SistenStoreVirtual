@@ -3,11 +3,12 @@
 
 		<h4><?php echo $title; ?></h4>
 
-		<!-- < if (validation_errors()) : ?>
+		<!--< if (validation_errors()) : ?>
+			< $thearray = validation_errors();  ?>
 			<div class="alert alert-danger" role="alert">
-				< echo validation_errors();  ?>
+				< echo validation_errors(); ?>
 			</div>
-		< endif; ?> -->
+		< endif; ?>-->
 
 		<form id="form_usuarios" method="post" action="<?php echo base_url() ?>index.php/usuarios/insertar" autocomplete="off">
 
@@ -25,7 +26,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="form-group">
 				<div class="row">
 					<div class="col-12 col-sm-6">

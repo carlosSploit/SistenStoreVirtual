@@ -98,6 +98,13 @@ if (isset($variable)) : ?>
                 notify(1, "Editar", "' . $mesg . '" , "R", "' . $estade . '");
             });
             </script>';
+        elseif ($id == 2) :
+            echo '<script type="text/javascript"> var str = ' . json_encode(validation_errors()) . ' </script>';
+            echo '<script type="text/javascript">
+            $(document).ready(function() {
+                notify(1, "Editar", str , "R", "' . $estade . '");
+            });
+            </script>';
         endif;
     } catch (Exception $e) {
     }
