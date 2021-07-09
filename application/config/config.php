@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-$config['base_url'] = 'http://localhost/tienda'; //Valor predefinido, utilizar solo si se utiliza de forma local
+$config['base_url'] = 'https://proyectotiendav.herokuapp.com/'; //Valor predefinido, utilizar solo si se utiliza de forma local
 $config['index_page'] = 'index.php';
 $config['uri_protocol']    = 'REQUEST_URI';
 $config['url_suffix'] = '';
