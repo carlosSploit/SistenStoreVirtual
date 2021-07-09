@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'a8be0960253a295f1407ae90abe027b4515075c2',
+    'reference' => '0feb1e131c2262563a24f507f5544eaafd7a8f9a',
     'name' => 'codeigniter/framework',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'a8be0960253a295f1407ae90abe027b4515075c2',
+      'reference' => '0feb1e131c2262563a24f507f5544eaafd7a8f9a',
     ),
     'doctrine/instantiator' => 
     array (
@@ -266,6 +266,22 @@
       array (
       ),
       'reference' => 'e096ef4b4c4c9a2f72c2ac660f54352cd31c60f8',
+    ),
+    'twbs/bootstrap' => 
+    array (
+      'pretty_version' => 'v5.0.2',
+      'version' => '5.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '688bce4fa695cc360a0d084e34f029b0c192b223',
+    ),
+    'twitter/bootstrap' => 
+    array (
+      'replaced' => 
+      array (
+        0 => 'v5.0.2',
+      ),
     ),
     'webmozart/assert' => 
     array (
