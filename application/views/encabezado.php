@@ -61,18 +61,7 @@
 
 	<div id="wrapper">
 
-		<ul class="sidebar navbar-nav">
-			<!--<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-fw fa-user"></i>
-						<span>Usuarios</span>
-					</a>
-					
-					<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-						<a class="dropdown-item" href="<?php echo base_url() ?>index.php/usuarios">Usuarios</a>
-						<a class="dropdown-item" href="<?php echo base_url() ?>index.php/roles">Roles</a>
-					</div>
-				</li>-->
+		<ul class="sidebar navbar-nav shadowgre">
 
 			<li class="nav-item dropdown">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -80,7 +69,7 @@
 					<span>Productos </span>
 				</a>
 
-				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<div class="dropdown-menu shadowgreh" aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/productos">Productos</a>
 					<a class="dropdown-item <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>" href="<?php echo base_url() ?>index.php/unidades">Unidades</a>
 					<a class="dropdown-item <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>" href="<?php echo base_url() ?>index.php/categorias">Categorias</a>
@@ -93,7 +82,7 @@
 					<span>Clientes </span>
 				</a>
 
-				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<div class="dropdown-menu shadowgreh" aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/clientes">Clientes</a>
 				</div>
 			</li>
@@ -104,7 +93,7 @@
 					<span>Compras </span>
 				</a>
 
-				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<div class="dropdown-menu shadowgreh" aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/compras/nueva">Nueva compra</a>
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/compras">Compras</a>
 				</div>
@@ -142,7 +131,7 @@
 					<span>Reportes</span>
 				</a>
 
-				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<div class="dropdown-menu shadowgreh" aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/reportes/detalle_reporte_venta">Reporte de ventas</a>
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/reportes/muestra_reporte_productos">Reporte de productos</a>
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/reportes/detalle_productos_categoria">Productos x categor&iacute;a</a>
@@ -155,7 +144,7 @@
 					<span>Administraci&oacute;n</span>
 				</a>
 
-				<div class="dropdown-menu " aria-labelledby="pagesDropdown">
+				<div class="dropdown-menu shadowgreh" aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/configuracion">Configuraci&oacute;n</a>
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/usuarios">Usuarios</a>
 					<a class="dropdown-item" href="<?php echo base_url() ?>index.php/roles">Roles</a>
