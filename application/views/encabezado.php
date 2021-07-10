@@ -19,7 +19,7 @@
 
 	<!-- Custom styles for this template-->
 	<link href="<?php echo base_url() ?>vendor/jquery-ui/jquery-ui.css" rel="stylesheet">
-
+	<link href="<?php echo base_url() ?>css/analitic.css" rel="stylesheet">
 	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/jquery-ui/jquery-ui.js"></script>
 	<script src="<?php echo base_url() ?>js/vanillatoasts.js"></script>

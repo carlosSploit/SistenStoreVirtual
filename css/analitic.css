@@ -1,0 +1,5 @@
+.shadowgre {
+  box-shadow: 8px 10px 23px -10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 8px 10px 23px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 8px 10px 23px -10px rgba(0, 0, 0, 0.75);
+}

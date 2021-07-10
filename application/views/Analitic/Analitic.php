@@ -4,7 +4,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="panel">
             <!--Se necesita hacer un reporte del monto total de ventas y pedidos diarias. (lineal)-->
-            <div class="card">
+            <div class="card shadowgre">
                 <div class="card-header">
                     Ventas Diarias Activas
                 </div>
@@ -15,7 +15,7 @@
             <br>
             <div class="row m-0">
                 <!--Se necesita hacer un reporte de los productos más vendidos.(torta)-->
-                <div class="card col px-1">
+                <div class="card col px-1 shadowgre">
                     <div class="card-header">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
@@ -54,7 +54,7 @@
                 <div class="w-100 d-block d-md-none red m-2"></div>
                 <div class="w-0 d-none d-md-block red m-2"></div>
                 <!--Se necesita hacer un reporte de los productos más vendidos y dan más ganancias. (torta)-->
-                <div class="card col px-1">
+                <div class="card col px-1 shadowgre">
                     <div class="card-header">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
@@ -94,7 +94,7 @@
             <br>
             <div class="row m-0">
                 <!--Se necesita hacer un reporte de los productos más pedidos.(torta)-->
-                <div class="card col px-1">
+                <div class="card col px-1 shadowgre">
                     <div class="card-header">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
@@ -133,7 +133,7 @@
                 <div class="w-100 d-block d-md-none red m-2"></div>
                 <div class="w-0 d-none d-md-block red m-2"></div>
                 <!--Se necesita hacer un reporte de los productos más pedidos y dan más ganancias.(torta)-->
-                <div class="card col px-1">
+                <div class="card col px-1 shadowgre">
                     <div class="card-header">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">

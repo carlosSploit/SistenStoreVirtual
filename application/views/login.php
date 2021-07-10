@@ -18,61 +18,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<link href="<?php echo base_url() ?>css/sb-admin.css" rel="stylesheet">
 
 	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
-	<style rel="stylesheet">
-		.continer-center {
-			justify-content: center;
-			align-items: center;
-			height: 90vh;
-		}
-
-		.red {
-			background-color: red;
-		}
-
-		.blue {
-			background-color: blue;
-		}
-
-		.color-t {
-			background-color: transparent;
-		}
-
-		.separed {
-			border-color: black;
-			border-radius: 5%;
-			background-color: gray;
-			height: 3px;
-		}
-
-		.text-cr {
-			font-size: 15px;
-		}
-
-		.input-text {
-			border-top: none;
-			border-left: none;
-			border-right: none;
-			font-size: 15px;
-		}
-
-		.input-text::selection {
-			border-top: none;
-			border-left: none;
-			border-right: none;
-		}
-
-		.carri,
-		.cimg {
-			width: 100%;
-			height: auto;
-		}
-
-		.box-sh {
-			box-shadow: 8px 10px 23px -6px rgba(0, 0, 0, 0.75);
-			-webkit-box-shadow: 8px 10px 23px -6px rgba(0, 0, 0, 0.75);
-			-moz-box-shadow: 8px 10px 23px -6px rgba(0, 0, 0, 0.75);
-		}
-	</style>
+	<link href="<?php echo base_url() ?>css/login-act.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark w-100">
