@@ -19,9 +19,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 	<link href="<?php echo base_url() ?>css/login-act.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-dark w-100">
+<body class="bg-dark w-100 blockscr">
+
+	<div class='ripple-background'>
+		<div class='circle xxlarge shade1'></div>
+		<div class='circle xlarge shade2'></div>
+		<div class='circle large shade3'></div>
+		<div class='circle mediun shade4'></div>
+		<div class='circle small shade5'></div>
+	</div>
+
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
 			<a class="navbar-brand mt-3" href="#"><img width="150" height="30" src="<?php echo base_url() ?>images/logoPron.png"></a>
