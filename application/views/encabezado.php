@@ -63,7 +63,7 @@
 
 		<ul class="sidebar navbar-nav shadowgre">
 
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-shopping-basket"></i>
 					<span>Productos </span>
@@ -76,7 +76,7 @@
 				</div>
 			</li>
 
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-user-friends"></i>
 					<span>Clientes </span>
@@ -87,7 +87,7 @@
 				</div>
 			</li>
 
-			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador' || $vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-truck"></i>
 					<span>Compras </span>
@@ -99,7 +99,7 @@
 				</div>
 			</li>
 
-			<li class="nav-item">
+			<li class="nav-item <?php echo (($vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a class="nav-link" href="<?php echo base_url() ?>index.php/caja">
 					<i class="fas fa-fw fa-cash-register"></i>
 					<span>Caja</span></a>
@@ -111,21 +111,21 @@
 					<span>Pedido</span></a>
 			</li>
 
-			<li class="nav-item">
+			<li class="nav-item <?php echo (($vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a class="nav-link" href="<?php echo base_url() ?>index.php/ventas">
 					<i class="fas fa-fw fa-shopping-cart"></i>
 					<span>Ventas</span>
 				</a>
 			</li>
 
-			<li class="nav-item <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
+			<li class="nav-item <?php echo (($vartipe == 'Trabajador' || $vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a class="nav-link" href="<?php echo base_url() ?>index.php/Analitic">
 					<i class="fas fa-chart-area"></i>
 					<span>Analiticas</span>
 				</a>
 			</li>
 
-			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador' || $vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-list-alt"></i>
 					<span>Reportes</span>
@@ -138,7 +138,7 @@
 				</div>
 			</li>
 
-			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador') ? 'd-none' : 'd-block'); ?>">
+			<li class="nav-item dropdown <?php echo (($vartipe == 'Trabajador' || $vartipe == 'Repartidor') ? 'd-none' : 'd-block'); ?>">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-wrench"></i>
 					<span>Administraci&oacute;n</span>
