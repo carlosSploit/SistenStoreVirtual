@@ -64,7 +64,7 @@ $idCompraTmp = uniqid();
 
 				<div class="row">
 					<div class="col-12 col-sm-6 offset-md-6">
-						<label style='font-weight:bold; font-size:30px; text-align:center;'> Total $</label><input type="text" name="total" id="total" size="7" readonly="true" value="0.00" style='font-weight:bold; font-size:30px; text-align:center; border:#E2EBED; background:#ffffff' />
+						<label style='font-weight:bold; font-size:30px; text-align:center;'> Total s/.</label><input type="text" name="total" id="total" size="7" readonly="true" value="0.00" style='font-weight:bold; font-size:30px; text-align:center; border:#E2EBED; background:#ffffff' />
 						<button id="completa_compra" type="button" class="btn btn-success">Completar compra</button>
 					</div>
 				</div>
