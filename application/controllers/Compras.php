@@ -184,7 +184,7 @@ class compras extends CI_Controller
 	{
 
 		$ultimoFolio = $this->almacenModel->ultimoFolio(2);
-		$fecha = date('Y-m-d H:i:s');
+		$fecha = date("Y") . "-" . date("m") . "-" . (date("d") - 1) . " " . (date("H") + 17) . ":" . date("i") . ":" . date("s");
 		$id_compra_tmp = $this->input->post("id_compra");
 		$total = preg_replace('/[\$,]/', '', $this->input->post("total"));
 		$id_usuario = $this->session->userdata('id_usuario');

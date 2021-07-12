@@ -45,7 +45,8 @@ class ventas extends CI_Controller
 	//Valida e inserta venta
 	public function insertar()
 	{
-		$fecha = date('Y-m-d H:i:s');
+
+		$fecha = date("Y") . "-" . date("m") . "-" . (date("d") - 1) . " " . (date("H") + 17) . ":" . date("i") . ":" . date("s");
 		$id_venta_tmp = $this->input->post("id_venta");
 		$id_cliente = $this->input->post("id_cliente");
 		$forma_pago = $this->input->post("forma_pago");
