@@ -1,5 +1,10 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed'); ?>
+defined('BASEPATH') or exit('No direct script access allowed');
+$varid =  $this->session->userdata('id_rol');
+if ($varid != NULL) :
+	redirect('/welcome');
+endif
+?>
 
 <!doctype html>
 <html lang="es">

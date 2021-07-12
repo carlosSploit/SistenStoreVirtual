@@ -101,7 +101,7 @@ $formas_pago = $this->db->get_where('forma_pago')->result();
 						<div class="col-lg-6 col-sm-12 col-md-6">
 							<div class="row">
 								<div class="col">
-									<label style='font-weight:bold; font-size:30px; text-align:center;'> Total $</label>
+									<label style='font-weight:bold; font-size:30px; text-align:center;'> Total S/.</label>
 									<div class="w-100 d-none d-lg-block d-md-block d-sm-block m-2"></div>
 									<input type="text" name="total" id="total" size="7" readonly="true" value="0.00" style='font-weight:bold; font-size:30px; text-align:center; border:#E2EBED; background:#ffffff' />
 								</div>

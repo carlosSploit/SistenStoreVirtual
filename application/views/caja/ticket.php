@@ -54,21 +54,21 @@ foreach ($detalleVenta as $row) {
 	$pdf->MultiCell(36, 3, utf8_decode($row->descripcion), 0, 'L');
 	$y2 = $pdf->GetY();
 	$pdf->SetXY(48, $y);
-	$pdf->Cell(14, 3, '$ ' . number_format($row->precio_unitario, 2, '.', ','), 0, 1, 'C');
+	$pdf->Cell(14, 3, 's/. ' . number_format($row->precio_unitario, 2, '.', ','), 0, 1, 'C');
 	$pdf->SetXY(62, $y);
-	$pdf->Cell(14, 3, '$ ' . $importe, 0, 1, 'C');
+	$pdf->Cell(14, 3, 's/.' . $importe, 0, 1, 'C');
 	$pdf->SetY($y2);
 }
 
 $pdf->Ln(2);
 $pdf->SetFont('Arial', 'B', 9);
 $pdf->Cell(50, 4, 'Total', 0, 0, 'R');
-$pdf->Cell(20, 4, '$ ' . number_format($datosVenta->total, 2, '.', ','), 0, 1, 'R');
+$pdf->Cell(20, 4, 's/. ' . number_format($datosVenta->total, 2, '.', ','), 0, 1, 'R');
 
 $pdf->SetFont('Arial', '', 8);
 $pdf->MultiCell(70, 4, utf8_decode(ucfirst(strtolower($datosVenta->descripcion))), 0, 'L', 0);
 $decimales = explode(".", $datosVenta->total);
-$pdf->MultiCell(70, 4, utf8_decode(ucfirst(strtolower(NumeroALetras::convertir($datosVenta->total, 'pesos')))) . ' ' . $decimales[1] . '/100 M.N', 0, 'L', 0);
+$pdf->MultiCell(70, 4, utf8_decode(ucfirst(strtolower(NumeroALetras::convertir($datosVenta->total, 'soles')))) . ' ' . $decimales[1] . '/100 Centimos', 0, 'L', 0);
 
 $pdf->Ln();
 $pdf->Cell(5);
