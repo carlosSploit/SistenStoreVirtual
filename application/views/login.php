@@ -45,21 +45,6 @@ endif
 	<div class="container w-100 continer-center d-sm-flex align-items-center justify-content-center">
 		<!-- <div class="container red h-100"> -->
 		<div class="row mx-auto mt-10">
-			<!-- <div class="col red d-none d-lg-block d-md-block d-sm-none">
-				<div id="carouselExampleSlidesOnly" class="carousel slide cimg" data-bs-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<img src="https://scontent.fpiu1-1.fna.fbcdn.net/v/t1.6435-9/139433609_1695888413926284_4434317151225121113_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=730e14&_nc_eui2=AeFqqLKoi2DDHBnT01akbmt7JSMsnHdKk1AlIyycd0qTUK2pXPUAkH7tJ5t_MS5VpiEA0_f5G3knGZT4PxjULMP_&_nc_ohc=4ifrOiLaP8UAX8Slgv2&_nc_ht=scontent.fpiu1-1.fna&oh=ea538499edcd5f3f2e3e999e8cf723aa&oe=60EDFFD4" class="cimg" alt="...">
-						</div>
-						<div class="carousel-item">
-							<img src="..." class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item">
-							<img src="..." class="d-block w-100" alt="...">
-						</div>
-					</div>
-				</div>
-			</div> -->
 			<div class="col card card-login box-sh">
 				<div class="card-title text-center color-t mt-2">
 					<img class="mt-3 mb-3" width="150" height="150" src="<?php echo base_url() ?>images/ln.png">
