@@ -32,7 +32,7 @@
 						<th>Nombre</th>
 						<th>Caja</th>
 						<th>Rol</th>
-						<th>&Uacute;ltimo inicio</th>
+						<!-- <th>&Uacute;ltimo inicio</th> -->
 						<th width="3%"></th>
 						<th width="3%"></th>
 						<th width="3%"></th>
@@ -47,7 +47,7 @@
 							<td><?php echo $dato->nombre; ?></td>
 							<td><?php echo $dato->caja; ?></td>
 							<td><?php echo $dato->rol; ?></td>
-							<td><?php echo $dato->last_session; ?></td>
+							<!-- <td>< echo $dato->last_session; ?></td> -->
 							<td>
 								<a href="<?php echo base_url() . "index.php/usuarios/editar_password/" . $dato->id ?>" data-toggle="tooltip" data-placement="top" title="Cambiar contrase&ntilde;a">
 									<span class='fas fa-fw fa-wrench'></span>

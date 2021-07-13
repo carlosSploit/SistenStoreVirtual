@@ -61,12 +61,12 @@
 					<div class="row">
 						<div class="col">
 							<label for="precio_venta"><span class="text-danger">*</span>Precio de venta</label>
-							<input onkeypress="limit(this.value,'precio_venta',12)" class="form-control" id="precio_venta" type="number" name="precio_venta" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de venta">
+							<input onkeypress="limit(this.value,'precio_venta',12)" class="form-control" id="precio_venta" type="number" step=".01" name="precio_venta" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de venta">
 						</div>
 
 						<div class="col">
 							<label for="precio_compra">Precio de compra</label>
-							<input onkeypress="limit(this.value,'precio_compra',12)" class="form-control" id="precio_compra" type="number" name="precio_compra" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de compra">
+							<input onkeypress="limit(this.value,'precio_compra',12)" class="form-control" id="precio_compra" type="number" step=".01" name="precio_compra" onkeypress="return validateDecimal(this.value);" placeholder="Escribe aquí el precio de compra">
 						</div>
 					</div>
 				</div>
